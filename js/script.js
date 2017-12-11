@@ -48,7 +48,7 @@ $(() => {
   function startAgain (){
     $('.pageThree').hide();
     pageTwo = $('.pageTwo').show();
-    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    // $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     resetTimer();
     colorRandomlySelected();
   }
@@ -102,6 +102,10 @@ $(() => {
     function completedRound(){
       $rounds.eq(round).css('backgroundColor', 'black');
       round++;
+      if (round >= 6){
+        $('.pageTwo').hide();
+        pageThree = $('.pageFour').show();
+      }
     }
 
     timeGiven--;
