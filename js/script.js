@@ -48,6 +48,7 @@ $(() => {
   function startAgain (){
     $('.pageThree').hide();
     pageTwo = $('.pageTwo').show();
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     resetTimer();
     colorRandomlySelected();
   }
@@ -89,10 +90,8 @@ $(() => {
   const $rounds = $('.gameRounds li');
 
   function checkForMatch(e){
-    console.log(timeGiven, timeRemaining);
-    // check the e.target .text() to see if it matches the colorOfText
+    // console.log(timeGiven, timeRemaining);
     if(colorOfText === $(e.target).text()){
-      console.log($(e.target).text());
       completedRound();
     }else if(colorOfText !== $(e.target).text()){
       $('.pageTwo').hide();
