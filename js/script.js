@@ -1,5 +1,5 @@
 console.log('Ready!');
-let timeGiven = 7;
+let timeGiven = 8;
 let timeRemaining = timeGiven;
 let timerRunning = false;
 let timerId = null;
@@ -23,7 +23,7 @@ function setup() {
   const $backToPageOneFromPageThreeButton = $('.backToPageOneFromPageThree');
   const $backToPageOneFromPageFourButton = $('.backToPageOneFromPageFour');
 
-
+  // LEVEL 1
   function beginGame(){
     $pageOne.hide();
     $pageTwo.show();
@@ -31,7 +31,6 @@ function setup() {
     colorRandomlySelected();
   }
 
-  // TIMER
   function startTimer(){
     timeRemaining = timeGiven;
     $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
@@ -44,27 +43,27 @@ function setup() {
         clearInterval(timerId);
         $pageTwo.hide();
         $pageThree.show();
-        timeGiven = 7;
+        timeGiven = 8;
       }
       timerRunning = true;
     }, 1000);
   }
 
   function startAgain (){
+    round = 0
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $pageThree.hide();
     $pageTwo.show();
     resetTimer();
     colorRandomlySelected();
   }
 
-  // RESET TIMER
   function resetTimer(){
     clearInterval(timerId);
     timerRunning = false;
     startTimer();
   }
 
-  //GENERATING WORD AND COLOR OF WORD:
   function generateRandomColor() {
     return colors[Math.floor(Math.random()*colors.length)];
   }
@@ -74,13 +73,34 @@ function setup() {
     colorOfText = generateRandomColor();
     $displaycolor.text(chosenWord).css('color', colorOfText);
   }
-  // console.log(colorOfText);
 
-  // ROUNDS
+  // TO RANDOMLY CHANGE THE CONTENT OF COLOR BUTTONS for LEVEL 2:
+  //
+  // function randomlySelectedColorOptions() {
+  //   const randomColorButtons = $colorButtons.get();
+  //   randomColorButtons = randomColorButtons.sort(function() {
+  //     return Math.round( Math.random()*colorButtons.length);
+  //     randomColorButtons.forEach(i); {
+
+  //     }
+  //   })
+  //
+  //   const
+  //   var ul = document.querySelector('ul');
+  //   for (var i = ul.children.length; i >= 0; i--) {
+  //       ul.appendChild(ul.children[Math.random() * i | 0]);
+  //   }
+
+  //
+  //   const $colours = $($colourButtons).map(function(){
+  //         return $(this).text(displayColour);
+  // }
+
+
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'black');
     round++;
-    if (round >= 6){
+    if (round >= 8){
       clearInterval(timerId);
       console.log('timer stopped because end of round');
       $pageTwo.hide();
@@ -93,7 +113,6 @@ function setup() {
     }
   }
 
-  // CHECKING FOR MATCH:
   function checkForMatch(e){
     // console.log(timeGiven, timeRemaining);
     if(colorOfText === $(e.target).text()){
@@ -101,12 +120,12 @@ function setup() {
     }else if(colorOfText !== $(e.target).text()){
       $pageTwo.hide();
       $pageThree.show();
-      timeGiven = 7;
+      timeGiven = 8;
     }
   }
 
   function playAgain (){
-    timeGiven = 7;
+    timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $pageFour.hide();
@@ -116,22 +135,23 @@ function setup() {
   }
 
   function backToPageOneFromPageFour() {
-    timeGiven = 7;
+    timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $pageFour.hide();
     $pageOne.show();
   }
 
-
   function backToPageOneFromPageThree() {
-    timeGiven = 7;
+    timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $pageThree.hide();
     $pageOne.show();
   }
+  
 
+  // BUTTON EVENTS
   $beginButton.on('click', beginGame);
 
   $colorButtons.on('click', checkForMatch);
