@@ -152,6 +152,21 @@ h1 {
 .startAgainButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
+
+.backToPageOneFromPageThree {
+  padding: 20px 40px;
+  margin-top: 40px;
+  background-color: rgba(255, 141, 10, 0.46);
+  font-family: 'Syncopate', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.backToPageOneFromPageThree:hover{
+  background-color: rgba(255, 10, 218, 0.46);
+}
+
 /*PAGE 4 DIV*/
 .pageFour {
   display: none;
@@ -164,7 +179,40 @@ h1 {
   font-size: 70px;
   font-weight: 400;
   margin: 80px 20px 30px 20px;
+  -webkit-animation-name:pulse;
+  animation-name: pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
+
+@-webkit-keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  75% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  75% {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
 
 .finalScoreTime {
   font-family: 'Syncopate', sans-serif;
@@ -184,5 +232,19 @@ h1 {
 }
 
 .playAgainButton:hover {
+  background-color: rgba(255, 10, 218, 0.46);
+}
+
+.backToPageOneFromPageFour {
+  padding: 20px 40px;
+  margin-top: 40px;
+  background-color: rgba(255, 141, 10, 0.46);
+  font-family: 'Syncopate', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.backToPageOneFromPageFour:hover{
   background-color: rgba(255, 10, 218, 0.46);
 }

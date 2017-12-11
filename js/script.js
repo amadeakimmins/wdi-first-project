@@ -1,14 +1,28 @@
 console.log('Ready!');
-$(() => {
+let timeGiven = 7;
+let timeRemaining = timeGiven;
+let timerRunning = false;
+let timerId = null;
+let colorOfText = null;
+const colors = ['yellow', 'red', 'blue', 'green', 'pink', 'orange'];
+let round = 0;
+
+function setup() {
 
   const $pageOne = $('.pageOne');
   const $pageTwo = $('.pageTwo');
   const $pageThree = $('.pageThree');
   const $pageFour = $('.pageFour');
-  // pageTwo.hide();
-
-
   const $beginButton = $('.beginButton');
+  const $displayTimerOnScreen = $('.timerDisplay');
+  const $startAgainButton = $('.startAgainButton');
+  const $displaycolor = $('.colorWordWithDifferentColor');
+  const $colorButtons = $('.colorsForPlayerToPickFrom li');
+  const $rounds = $('.gameRounds li');
+  const $playAgainButton = $('.playAgainButton');
+  const $backToPageOneFromPageThreeButton = $('.backToPageOneFromPageThree');
+  const $backToPageOneFromPageFourButton = $('.backToPageOneFromPageFour');
+
 
   function beginGame(){
     $pageOne.hide();
@@ -17,17 +31,12 @@ $(() => {
     colorRandomlySelected();
   }
 
-  $beginButton.on('click', beginGame);
-
   // TIMER
-  const $displayTimerOnScreen = $('.timerDisplay');
-  let timeGiven = 7;
-  let timeRemaining = timeGiven;
-  let timerRunning = false;
-  let timerId = null
-
   function startTimer(){
+    timeRemaining = timeGiven;
+    $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerId = setInterval(() => {
+      console.log('clock ticking');
       timeRemaining--;
       $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
 
@@ -40,8 +49,6 @@ $(() => {
       timerRunning = true;
     }, 1000);
   }
-  // PAGE 3 START AGAIN BUTTON
-  const $startAgainButton = $('.startAgainButton');
 
   function startAgain (){
     $pageThree.hide();
@@ -53,21 +60,9 @@ $(() => {
   // RESET TIMER
   function resetTimer(){
     clearInterval(timerId);
-    timeRemaining = timeGiven;
-    $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerRunning = false;
     startTimer();
-
   }
-
-  $($startAgainButton).on('click', startAgain);
-
-  // GAME LOGIC
-  const $displaycolor = $('.colorWordWithDifferentColor');
-  const $colorButtons = $('.colorsForPlayerToPickFrom li');
-  let colorOfText = null;
-  const colors = ['yellow', 'red', 'blue', 'green', 'pink', 'orange'];
-
 
   //GENERATING WORD AND COLOR OF WORD:
   function generateRandomColor() {
@@ -79,28 +74,26 @@ $(() => {
     colorOfText = generateRandomColor();
     $displaycolor.text(chosenWord).css('color', colorOfText);
   }
-  console.log(colorOfText);
+  // console.log(colorOfText);
 
-  //CHECKING FOR MATCH:
-
-  let round = 0;
-  const $rounds = $('.gameRounds li');
-
+  // ROUNDS
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'black');
     round++;
     if (round >= 6){
-      console.log('moving to next round');
       clearInterval(timerId);
+      console.log('timer stopped because end of round');
       $pageTwo.hide();
       $pageFour.show();
     } else {
       timeGiven--;
       resetTimer();
+      console.log('start timer again because not end of round yet');
       colorRandomlySelected();
     }
   }
 
+  // CHECKING FOR MATCH:
   function checkForMatch(e){
     // console.log(timeGiven, timeRemaining);
     if(colorOfText === $(e.target).text()){
@@ -111,8 +104,6 @@ $(() => {
       timeGiven = 7;
     }
   }
-  // PLAY AGAIN BUTTON
-  const $playAgainButton = $('.playAgainButton');
 
   function playAgain (){
     timeGiven = 7;
@@ -123,10 +114,34 @@ $(() => {
     resetTimer();
     colorRandomlySelected();
   }
-  $playAgainButton.on('click', playAgain);
+
+  function backToPageOneFromPageFour() {
+    timeGiven = 7;
+    round = 0;
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $pageFour.hide();
+    $pageOne.show();
+  }
 
 
+  function backToPageOneFromPageThree() {
+    timeGiven = 7;
+    round = 0;
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $pageThree.hide();
+    $pageOne.show();
+  }
+
+  $beginButton.on('click', beginGame);
 
   $colorButtons.on('click', checkForMatch);
 
-});
+  $startAgainButton.on('click', startAgain);
+
+  $backToPageOneFromPageThreeButton.on('click', backToPageOneFromPageThree);
+
+  $playAgainButton.on('click', playAgain);
+
+  $backToPageOneFromPageFourButton.on('click', backToPageOneFromPageFour);
+}
+$(setup);
