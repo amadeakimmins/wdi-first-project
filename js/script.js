@@ -9,11 +9,13 @@ $(() => {
   let pageThree = $('.pageThree').hide();
   let pageFour = $('.pageFour').hide();
 
+  const colours = $('.colorsForPlayerToPickFrom li').map(function(){ return $(this).text();});
+  console.log(colours)
   const beginButton = $('.beginButton');
 
   function beginGame(){
     $('.pageOne').hide();
-    pageTwo = $('.pageTwo').show();
+    pageTwo = $('.pageTwo').show(startTimer);
   }
 
   $(beginButton).on('click', beginGame);
@@ -22,20 +24,22 @@ $(() => {
   // this starts the timer as soon as the page is loaded. need to attach this to above function.
   // will need it to decrease in time every time the player gets past a round.
 
-  const displayTimerOnScreen = $('.timerDisplay');
+  const $displayTimerOnScreen = $('.timerDisplay');
+  let timeRemaining = 8;
+  let timerRunning = false;
+  let timerId = null
+  function startTimer(){
+    timerId = setInterval(() => {
+      timeRemaining--;
+      $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
 
-  let timeRemaining = 10;
-  const timerRunning = setInterval(timer, 1000);
-
-  function timer(){
-    timeRemaining = timeRemaining-1;
-    if(timer < 0) {
-      clearInterval(timerRunning);
-      return;
-    }
-
-    $(displayTimerOnScreen).text(`${timeRemaining + ' ' + 'secs'}`);
+      if(timeRemaining === 0) {
+        clearInterval(timerId);
+      }
+    }, 1000);
+    timerRunning = true;
   }
+
 
   // the colorWordWithDifferentColor will be an object with all the different combinations of colors and words in an array.
   // will have a function that loops over the words and randomly selects a new word when the player is correct.
@@ -50,6 +54,11 @@ $(() => {
 
 
 
-
-
+//gerry's pseudo code
+// when the user clicks on a colour, run a callback function that will look at
+//1.whether it's right or wrong
+//2 pick a random colour in the array, this will be the text displayed
+//3 pick another random color in the array, this will be the color of the text
+//4 display that color as the new "title",
+//5 store the first selected color in a variable to check if the user gets the right answer later
 });
