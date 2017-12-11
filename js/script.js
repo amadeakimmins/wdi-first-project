@@ -22,7 +22,8 @@ $(() => {
 
   // TIMER
   const $displayTimerOnScreen = $('.timerDisplay');
-  let timeRemaining = 7;
+  let timeGiven = 8;
+  let timeRemaining = timeGiven;
   let timerRunning = false;
   let timerId = null
 
@@ -35,6 +36,7 @@ $(() => {
         clearInterval(timerId);
         $('.pageTwo').hide();
         pageThree = $('.pageThree').show();
+        timeGiven = 8;
       }
     }, 1000);
     timerRunning = true;
@@ -45,13 +47,15 @@ $(() => {
 
   function startAgain (){
     $('.pageThree').hide();
-    pageTwo = $('.pageTwo').show(resetTimer);
+    pageTwo = $('.pageTwo').show();
+    resetTimer();
     colorRandomlySelected();
   }
+
   // RESET TIMER
   function resetTimer(){
     clearInterval(timerId);
-    timeRemaining = 7;
+    timeRemaining = timeGiven;
     $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerRunning = false;
     startTimer();
@@ -60,26 +64,12 @@ $(() => {
 
   $($startAgainButton).on('click', startAgain);
 
-  //gerry's pseudo code
-  // when the user clicks on a color, run a callback function that will look at
-  //1.whether it's right or wrong
-  //2 pick a random  in the array, this will be the text displayed
-  //3 pick another random color in the array, this will be the color of the text
-  //4 display that color as the new "title",
-  //5 store the first selected color in a variable to check if the user gets the right answer later
-
   // GAME LOGIC
   const $displaycolor = $('.colorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
   let colorOfText = null;
   const colors = ['yellow', 'red', 'blue', 'green', 'pink', 'orange'];
 
-
-  // a function that randomly picks a string from the colors array using Math.random (store in colorName)
-  // select another randomly generated string and store in a variable called colorOfText
-  // update the .text() of the $displaycolor element
-  // $displaycolor.css('backgroundColor', colorOfText)
-  // call function when page loads and then everytime need a new color
 
   //GENERATING WORD AND COLOR OF WORD:
   function generateRandomColor() {
@@ -95,10 +85,11 @@ $(() => {
 
   //CHECKING FOR MATCH:
 
-  const $rounds = $('.gameRounds');
-  const $eachRound = $('.gameRounds li');
+  let round = 0;
+  const $rounds = $('.gameRounds li');
 
   function checkForMatch(e){
+    console.log(timeGiven, timeRemaining);
     // check the e.target .text() to see if it matches the colorOfText
     if(colorOfText === $(e.target).text()){
       console.log($(e.target).text());
@@ -106,27 +97,41 @@ $(() => {
     }else if(colorOfText !== $(e.target).text()){
       $('.pageTwo').hide();
       pageThree = $('.pageThree').show();
+      timeGiven = 8;
     }
 
     function completedRound(){
-      // $rounds.each((i, $eachRound) => {
-      $eachRound.css('backgroundColor', 'black');
-      //  });
+      $rounds.eq(round).css('backgroundColor', 'black');
+      round++;
     }
+
+    timeGiven--;
+    if(timeRemaining === 0) {
+      clearInterval(timerId);
+    }
+
+    resetTimer();
     colorRandomlySelected();
   }
+
+  const $roundSix = $('.roundSix');
+
+  function playerHasWon() {
+    if($roundSix.css('backgroundColor', 'black')){
+      $('.pageTwo').hide();
+      pageThree = $('.pageFour').show();
+    }
+  }
+
 
 
   $colorButtons.on('click', checkForMatch)
 
 
 
-  // when the player clicks on the word they think matches use a if else statment with ternary operators to check if it's right.
-  // if correct a new colorWordWithDifferentColor is randomly selected and the roundOne box will be have a black background-color.
-  // if incorrect hide this pageTwo and show pageThree.
 
 
-  // if player wants to START AGAIN have an .on('click') event on the button that hides pageThree and shows pageTwo.
+
   // repeat until the player has completed all 6 rounds.
   // when player completes round 6 then hide pageTwo and show pageFour.
   // if player wants to play again have an on('click') event on the PLAY AGAIN button that hides pageFour and shows pageTwo
