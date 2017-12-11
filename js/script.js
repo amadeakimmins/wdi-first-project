@@ -1,28 +1,27 @@
 console.log('Ready!');
 $(() => {
 
-  // to get from page 1 to page 2 click the begin button.
-  // need to hide div pageOne and show div pageTwo
-  //.on('click') event listener
+  const $pageOne = $('.pageOne');
+  const $pageTwo = $('.pageTwo');
+  const $pageThree = $('.pageThree');
+  const $pageFour = $('.pageFour');
+  // pageTwo.hide();
 
 
-  let pageTwo = $('.pageTwo').hide();
-  let pageThree = $('.pageThree').hide();
-  let pageFour = $('.pageFour').hide();
-
-  const beginButton = $('.beginButton');
+  const $beginButton = $('.beginButton');
 
   function beginGame(){
-    $('.pageOne').hide();
-    pageTwo = $('.pageTwo').show(startTimer);
+    $pageOne.hide();
+    $pageTwo.show();
+    startTimer();
     colorRandomlySelected();
   }
 
-  $(beginButton).on('click', beginGame);
+  $beginButton.on('click', beginGame);
 
   // TIMER
   const $displayTimerOnScreen = $('.timerDisplay');
-  let timeGiven = 8;
+  let timeGiven = 7;
   let timeRemaining = timeGiven;
   let timerRunning = false;
   let timerId = null
@@ -34,21 +33,19 @@ $(() => {
 
       if(timeRemaining === 0) {
         clearInterval(timerId);
-        $('.pageTwo').hide();
-        pageThree = $('.pageThree').show();
-        timeGiven = 8;
+        $pageTwo.hide();
+        $pageThree.show();
+        timeGiven = 7;
       }
+      timerRunning = true;
     }, 1000);
-    timerRunning = true;
   }
-
   // PAGE 3 START AGAIN BUTTON
   const $startAgainButton = $('.startAgainButton');
 
   function startAgain (){
-    $('.pageThree').hide();
-    pageTwo = $('.pageTwo').show();
-    // $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $pageThree.hide();
+    $pageTwo.show();
     resetTimer();
     colorRandomlySelected();
   }
@@ -89,54 +86,47 @@ $(() => {
   let round = 0;
   const $rounds = $('.gameRounds li');
 
+  function completedRound(){
+    $rounds.eq(round).css('backgroundColor', 'black');
+    round++;
+    if (round >= 6){
+      console.log('moving to next round');
+      clearInterval(timerId);
+      $pageTwo.hide();
+      $pageFour.show();
+    } else {
+      timeGiven--;
+      resetTimer();
+      colorRandomlySelected();
+    }
+  }
+
   function checkForMatch(e){
     // console.log(timeGiven, timeRemaining);
     if(colorOfText === $(e.target).text()){
       completedRound();
     }else if(colorOfText !== $(e.target).text()){
-      $('.pageTwo').hide();
-      pageThree = $('.pageThree').show();
-      timeGiven = 8;
+      $pageTwo.hide();
+      $pageThree.show();
+      timeGiven = 7;
     }
+  }
+  // PLAY AGAIN BUTTON
+  const $playAgainButton = $('.playAgainButton');
 
-    function completedRound(){
-      $rounds.eq(round).css('backgroundColor', 'black');
-      round++;
-      if (round >= 6){
-        $('.pageTwo').hide();
-        pageThree = $('.pageFour').show();
-      }
-    }
-
-    timeGiven--;
-    if(timeRemaining === 0) {
-      clearInterval(timerId);
-    }
-
+  function playAgain (){
+    timeGiven = 7;
+    round = 0;
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $pageFour.hide();
+    $pageTwo.show();
     resetTimer();
     colorRandomlySelected();
   }
-
-  const $roundSix = $('.roundSix');
-
-  function playerHasWon() {
-    if($roundSix.css('backgroundColor', 'black')){
-      $('.pageTwo').hide();
-      pageThree = $('.pageFour').show();
-    }
-  }
+  $playAgainButton.on('click', playAgain);
 
 
 
-  $colorButtons.on('click', checkForMatch)
-
-
-
-
-
-
-  // repeat until the player has completed all 6 rounds.
-  // when player completes round 6 then hide pageTwo and show pageFour.
-  // if player wants to play again have an on('click') event on the PLAY AGAIN button that hides pageFour and shows pageTwo
+  $colorButtons.on('click', checkForMatch);
 
 });
