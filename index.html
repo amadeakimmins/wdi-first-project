@@ -11,12 +11,12 @@
 <body>
   <main>
     <h1>Colour Match</h1>
-    <div class="pageOne">
+    <div class="instructionPage">
       <h2 class="instructions">Instructions</h2>
       <p class="explanationOfGame">Aim of the game: Select the colour shown by clicking on the corresponding box underneath. However, the correct answer is the colour of the word itself and not the colour spelt out by the word. For example, if the word 'RED' is printed in a orange colour then you click the orange button. There will be 6 options to chose from. Each round is timed and the timer will decrease after every round so you've got to be quick!</p>
       <button type="button" name="button" class="beginButton">BEGIN</button>
     </div>
-    <div class="pageTwo">
+    <div class="levelOnePage">
       <h2 class="colorWordWithDifferentColor"></h2>
       <p class="timer">Timer: <span class="timerDisplay"><span></p>
         <ul class="colorsForPlayerToPickFrom">
@@ -25,7 +25,7 @@
           <li id="green">green</li>
           <li id="orange">orange</li>
           <li id="blue">blue</li>
-          <li id="pink">pink</li>
+          <li id="purple">purple</li>
         </ul>
       <div class="gameRounds">
         <li class="roundOne">1</li>
@@ -38,16 +38,38 @@
         <li class="roundEight">8</li>
       </div>
     </div>
-    <div class="pageThree">
+    <!-- <div class="levelTwoPage">
+      <h2 class="movingColorWordWithDifferentColor"></h2>
+      <p class="levelTwoTimer">Timer: <span class="levelTwoTimerDisplay"><span></p>
+        <ul class="levelTwoColorsForPlayerToPickFrom">
+          <li id="red">red</li>
+          <li id="yellow">yellow</li>
+          <li id="green">green</li>
+          <li id="orange">orange</li>
+          <li id="blue">blue</li>
+          <li id="purple">purple</li>
+        </ul>
+      <div class="LevelTwoGameRounds">
+        <li class="roundOne">1</li>
+        <li class="roundTwo">2</li>
+        <li class="roundThree">3</li>
+        <li class="roundFour">4</li>
+        <li class="roundFive">5</li>
+        <li class="roundSix">6</li>
+        <li class="roundSeven">7</li>
+        <li class="roundEight">8</li>
+      </div>
+    </div> -->
+    <div class="tryAgainPage">
       <p class="playerTryAgain">UNLUCKY, <br> TRY AGAIN!</p>
       <button type="button" name="button" class="startAgainButton">START AGAIN</button>
-      <button type="button" name="button" class="backToPageOneFromPageThree">HOMEPAGE</button>
+      <button type="button" name="button" class="backToInstructionPageFromTryAgainPage">HOMEPAGE</button>
     </div>
-    <div class="pageFour">
+    <div class="playerPassedLevelOne">
       <p class="playerHasWon">YOU WIN!!!</p>
       <p class="finalScoreTime">You completed the game in:</p>
-      <button type="button" name="button" class="playAgainButton">PLAY AGAIN</button>
-      <button type="button" name="button" class="backToPageOneFromPageFour">HOMEPAGE</button>
+      <button type="button" name="button" class="playLevelTwoButton">PLAY LEVEL 2</button>
+      <button type="button" name="button" class="backToInstructionPageFromPlayerWonPage">HOMEPAGE</button>
     </div>
   </main>
 </body>

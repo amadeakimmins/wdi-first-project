@@ -5,7 +5,6 @@
 
 /*BODY*/
 body {
-  background-color: pink;
   text-align: center;
   background: url(https://i.imgur.com/QkqCmu9.jpg);
   background-size: cover;
@@ -22,8 +21,8 @@ h1 {
   margin: 10px;
 }
 
-/*PAGE 1 DIV*/
-.pageOne {
+/*INSTRUCTION PAGE*/
+.instructionPage {
   height: 60vh;
   border: 5px dotted black;
 }
@@ -59,13 +58,12 @@ h1 {
 .beginButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
-/*PAGE 2 DIV*/
-.pageTwo {
+/*LEVEL 1 PAGE*/
+.levelOnePage {
   display: none;
   height: 60vh;
   border: 5px dotted black;
 }
-
 
 .colorWordWithDifferentColor {
   font-size: 60px;
@@ -124,8 +122,73 @@ h1 {
   border: 2px solid black;
 
 }
-/*PAGE 3 DIV*/
-.pageThree {
+
+/*LEVEL 2 PAGE*/
+/*.levelTwoPage {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}*/
+
+/*.movingColorWordWithDifferentColor {
+  font-size: 60px;
+  font-family: 'Monoton', cursive;
+  font-weight: 100;
+  color: rgba(250, 0, 0, 1);
+  margin: 10px 200px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}*/
+/*
+.levelTwoTimer {
+  font-family: 'Syncopate', sans-serif;
+  font-size: 20px;
+  margin: 10px 220px;
+  padding-top: 10px;
+}*/
+/*
+.levelTwoColorsForPlayerToPickFrom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}*/
+
+/*.levelTwoColorsForPlayerToPickFrom li {
+  font-family:'Syncopate', sans-serif;
+  font-size: 25px;
+  width: calc(30% - 3px);
+  margin: 15px 12px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.41);
+  border: 2px solid black;
+}*/
+
+/*.levelTwoGameRounds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}*/
+
+/*.levelTwoGameRounds li {
+  height: 25px;
+  width: 25px;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.41);
+  border: 2px solid black;
+
+}*/
+
+/*TRY AGAIN PAGE*/
+.tryAgainPage {
   display: none;
   height: 60vh;
   border: 5px dotted black;
@@ -152,7 +215,7 @@ h1 {
   background-color: rgba(255, 10, 218, 0.46);
 }
 
-.backToPageOneFromPageThree {
+.backToInstructionPageFromTryAgainPage {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -162,12 +225,12 @@ h1 {
   border: 1px solid black;
 }
 
-.backToPageOneFromPageThree:hover{
+.backToInstructionPageFromTryAgainPage:hover{
   background-color: rgba(255, 10, 218, 0.46);
 }
 
-/*PAGE 4 DIV*/
-.pageFour {
+/*PLAYER PASSED LEVEL ONE*/
+.playerPassedLevelOne {
   display: none;
   height: 60vh;
   border: 5px dotted black;
@@ -219,7 +282,7 @@ h1 {
   padding-top: 10px;
 }
 
-.playAgainButton {
+.playLevelTwoButton {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -229,11 +292,11 @@ h1 {
   border: 1px solid black;
 }
 
-.playAgainButton:hover {
+.playLevelTwoButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
 
-.backToPageOneFromPageFour {
+.backToInstructionPageFromPlayerWonPage {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -243,6 +306,6 @@ h1 {
   border: 1px solid black;
 }
 
-.backToPageOneFromPageFour:hover{
+.backToInstructionPageFromPlayerWonPage:hover{
   background-color: rgba(255, 10, 218, 0.46);
 }

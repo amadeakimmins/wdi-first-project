@@ -4,29 +4,31 @@ let timeRemaining = timeGiven;
 let timerRunning = false;
 let timerId = null;
 let colorOfText = null;
-const colors = ['yellow', 'red', 'blue', 'green', 'pink', 'orange'];
+const colors = ['yellow', 'red', 'blue', 'green', 'purple', 'orange'];
 let round = 0;
+let level = 1;
 
 function setup() {
 
-  const $pageOne = $('.pageOne');
-  const $pageTwo = $('.pageTwo');
-  const $pageThree = $('.pageThree');
-  const $pageFour = $('.pageFour');
+  const $instructionPage = $('.instructionPage');
+  const $levelOnePage = $('.levelOnePage');
+  // const $levelTwoPage = $('.levelTwoPage');
+  const $tryAgainPage = $('.tryAgainPage');
+  const $playerPassedLevelOnePage = $('.playerPassedLevelOne');
   const $beginButton = $('.beginButton');
   const $displayTimerOnScreen = $('.timerDisplay');
   const $startAgainButton = $('.startAgainButton');
-  const $displaycolor = $('.colorWordWithDifferentColor');
+  const $displayColor = $('.colorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
   const $rounds = $('.gameRounds li');
-  const $playAgainButton = $('.playAgainButton');
-  const $backToPageOneFromPageThreeButton = $('.backToPageOneFromPageThree');
-  const $backToPageOneFromPageFourButton = $('.backToPageOneFromPageFour');
+  const $playLevelTwoButton = $('.playLevelTwoButton');
+  const $backToInstructionPageFromTryAgainPageButton = $('.backToInstructionPageFromTryAgainPage');
+  const $backToInstructionPageFromPlayerWonPageButton = $('.backToInstructionPageFromPlayerWonPage');
 
-  // LEVEL 1
-  function beginGame(){
-    $pageOne.hide();
-    $pageTwo.show();
+
+  function beginLevelOne(){
+    $instructionPage.hide();
+    $levelOnePage.show();
     startTimer();
     colorRandomlySelected();
   }
@@ -41,8 +43,8 @@ function setup() {
 
       if(timeRemaining === 0) {
         clearInterval(timerId);
-        $pageTwo.hide();
-        $pageThree.show();
+        $levelOnePage.hide();
+        $tryAgainPage.show();
         timeGiven = 8;
       }
       timerRunning = true;
@@ -50,10 +52,10 @@ function setup() {
   }
 
   function startAgain (){
-    round = 0
+    round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
-    $pageThree.hide();
-    $pageTwo.show();
+    $tryAgainPage.hide();
+    $levelOnePage.show();
     resetTimer();
     colorRandomlySelected();
   }
@@ -71,30 +73,13 @@ function setup() {
   function colorRandomlySelected(){
     const chosenWord = generateRandomColor();
     colorOfText = generateRandomColor();
-    $displaycolor.text(chosenWord).css('color', colorOfText);
+    $displayColor.text(chosenWord).css('color', colorOfText);
+    if (level <= 1){
+      $displayColor
+    } else {
+      $displayColor.css('backgroundColor', 'black')
+    // } else if (level <= 3) {}
   }
-
-  // TO RANDOMLY CHANGE THE CONTENT OF COLOR BUTTONS for LEVEL 2:
-  //
-  // function randomlySelectedColorOptions() {
-  //   const randomColorButtons = $colorButtons.get();
-  //   randomColorButtons = randomColorButtons.sort(function() {
-  //     return Math.round( Math.random()*colorButtons.length);
-  //     randomColorButtons.forEach(i); {
-
-  //     }
-  //   })
-  //
-  //   const
-  //   var ul = document.querySelector('ul');
-  //   for (var i = ul.children.length; i >= 0; i--) {
-  //       ul.appendChild(ul.children[Math.random() * i | 0]);
-  //   }
-
-  //
-  //   const $colours = $($colourButtons).map(function(){
-  //         return $(this).text(displayColour);
-  // }
 
 
   function completedRound(){
@@ -102,9 +87,10 @@ function setup() {
     round++;
     if (round >= 8){
       clearInterval(timerId);
+      level++;
       console.log('timer stopped because end of round');
-      $pageTwo.hide();
-      $pageFour.show();
+      $levelOnePage.hide();
+      $playerPassedLevelOnePage.show();
     } else {
       timeGiven--;
       resetTimer();
@@ -118,50 +104,74 @@ function setup() {
     if(colorOfText === $(e.target).text()){
       completedRound();
     }else if(colorOfText !== $(e.target).text()){
-      $pageTwo.hide();
-      $pageThree.show();
+      $levelOnePage.hide();
+      $tryAgainPage.show();
       timeGiven = 8;
     }
   }
 
-  function playAgain (){
+  function beginLevelTwo (){
     timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
-    $pageFour.hide();
-    $pageTwo.show();
+    $playerPassedLevelOnePage.hide();
+    $levelOnePage.show();
     resetTimer();
     colorRandomlySelected();
   }
 
-  function backToPageOneFromPageFour() {
+  function backToInstructionPageFromPlayerWonPage() {
     timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
-    $pageFour.hide();
-    $pageOne.show();
+    $playerPassedLevelOnePage.hide();
+    $instructionPage.show();
   }
 
-  function backToPageOneFromPageThree() {
+  function backToInstructionPageFromTryAgainPage() {
     timeGiven = 8;
     round = 0;
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
-    $pageThree.hide();
-    $pageOne.show();
+    $tryAgainPage.hide();
+    $instructionPage.show();
   }
-  
+
+
 
   // BUTTON EVENTS
-  $beginButton.on('click', beginGame);
+  $beginButton.on('click', beginLevelOne);
 
   $colorButtons.on('click', checkForMatch);
 
   $startAgainButton.on('click', startAgain);
 
-  $backToPageOneFromPageThreeButton.on('click', backToPageOneFromPageThree);
+  $backToInstructionPageFromTryAgainPageButton.on('click', backToInstructionPageFromTryAgainPage);
 
-  $playAgainButton.on('click', playAgain);
+  $playLevelTwoButton.on('click', beginLevelTwo);
 
-  $backToPageOneFromPageFourButton.on('click', backToPageOneFromPageFour);
+  $backToInstructionPageFromPlayerWonPageButton.on('click', backToInstructionPageFromPlayerWonPage);
 }
 $(setup);
+
+
+// TO RANDOMLY CHANGE THE CONTENT OF COLOR BUTTONS for LEVEL 3:
+//
+// function randomlySelectedColorOptions() {
+//   const randomColorButtons = $colorButtons.get();
+//   randomColorButtons = randomColorButtons.sort(function() {
+//     return Math.round( Math.random()*colorButtons.length);
+//     randomColorButtons.forEach(i); {
+
+//     }
+//   })
+//
+//   const
+//   var ul = document.querySelector('ul');
+//   for (var i = ul.children.length; i >= 0; i--) {
+//       ul.appendChild(ul.children[Math.random() * i | 0]);
+//   }
+
+//
+//   const $colours = $($colourButtons).map(function(){
+//         return $(this).text(displayColour);
+// }
