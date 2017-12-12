@@ -7,21 +7,25 @@ let colorOfText = null;
 const colors = ['yellow', 'red', 'blue', 'green', 'purple', 'orange'];
 let round = 0;
 let level = 1;
+let startTime = null;
+let secondsTaken = null;
 
 function setup() {
 
   const $instructionPage = $('.instructionPage');
   const $levelOnePage = $('.levelOnePage');
-  // const $levelTwoPage = $('.levelTwoPage');
   const $tryAgainPage = $('.tryAgainPage');
   const $playerPassedLevelOnePage = $('.playerPassedLevelOne');
+  // const $playerPassedLevelTwoPage = $('.playerPassedLevelTwo');
   const $beginButton = $('.beginButton');
   const $displayTimerOnScreen = $('.timerDisplay');
   const $startAgainButton = $('.startAgainButton');
   const $displayColor = $('.colorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
   const $rounds = $('.gameRounds li');
+  const $finalScoreTime = $('.finalScoreTime');
   const $playLevelTwoButton = $('.playLevelTwoButton');
+  // const $playLevelThreeButton = $('.playerLevelThreeButton');
   const $backToInstructionPageFromTryAgainPageButton = $('.backToInstructionPageFromTryAgainPage');
   const $backToInstructionPageFromPlayerWonPageButton = $('.backToInstructionPageFromPlayerWonPage');
 
@@ -29,6 +33,7 @@ function setup() {
   function beginLevelOne(){
     $instructionPage.hide();
     $levelOnePage.show();
+    level = 1;
     startTimer();
     colorRandomlySelected();
   }
@@ -38,6 +43,7 @@ function setup() {
     $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerId = setInterval(() => {
       console.log('clock ticking');
+      startTime = new Date().getTime();
       timeRemaining--;
       $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
 
@@ -75,12 +81,13 @@ function setup() {
     colorOfText = generateRandomColor();
     $displayColor.text(chosenWord).css('color', colorOfText);
     if (level <= 1){
-      $displayColor
-    } else {
+      $displayColor;
+    } else if (level <= 2){
       $displayColor.addClass('level-2-animation');
-
+    // } else {
+    //   $displayColor.addClass('level-2-animation');
+    //   $colorButtons.css('backgroundColor', 'red');
     }
-    //  else if (level <= 3) {}
   }
 
 
@@ -89,12 +96,15 @@ function setup() {
     round++;
     if (round >= 8){
       clearInterval(timerId);
+      secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
+      $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
       level++;
       console.log('timer stopped because end of round');
       $levelOnePage.hide();
       $playerPassedLevelOnePage.show();
     } else {
       timeGiven--;
+      secondsTaken = 0;
       resetTimer();
       console.log('start timer again because not end of round yet');
       colorRandomlySelected();
@@ -112,6 +122,7 @@ function setup() {
     }
   }
 
+
   function beginLevelTwo (){
     timeGiven = 8;
     round = 0;
@@ -121,6 +132,16 @@ function setup() {
     resetTimer();
     colorRandomlySelected();
   }
+
+  // function beginLevelThree(){
+  //   timeGiven = 8;
+  //   round = 0;
+  //   $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+  //   $playerPassedLevelTwoPage.hide();
+  //   $levelOnePage.show();
+  //   resetTimer();
+  //   colorRandomlySelected();
+  // }
 
   function backToInstructionPageFromPlayerWonPage() {
     timeGiven = 8;
@@ -150,6 +171,8 @@ function setup() {
   $backToInstructionPageFromTryAgainPageButton.on('click', backToInstructionPageFromTryAgainPage);
 
   $playLevelTwoButton.on('click', beginLevelTwo);
+
+  // $playLevelThreeButton.on('click', beginLevelThree);
 
   $backToInstructionPageFromPlayerWonPageButton.on('click', backToInstructionPageFromPlayerWonPage);
 
