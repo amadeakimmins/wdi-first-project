@@ -77,8 +77,10 @@ function setup() {
     if (level <= 1){
       $displayColor
     } else {
-      $displayColor.css('backgroundColor', 'black')
-    // } else if (level <= 3) {}
+      $displayColor.addClass('level-2-animation');
+
+    }
+    //  else if (level <= 3) {}
   }
 
 
@@ -150,7 +152,10 @@ function setup() {
   $playLevelTwoButton.on('click', beginLevelTwo);
 
   $backToInstructionPageFromPlayerWonPageButton.on('click', backToInstructionPageFromPlayerWonPage);
+
+
 }
+
 $(setup);
 
 
@@ -174,4 +179,3 @@ $(setup);
 //
 //   const $colours = $($colourButtons).map(function(){
 //         return $(this).text(displayColour);
-// }
