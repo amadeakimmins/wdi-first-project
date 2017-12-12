@@ -58,7 +58,7 @@ h1 {
 .beginButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
-/*GAME PAGE AND LEVEL 1*/
+/*LEVEL 1*/
 .levelOnePage {
   display: none;
   height: 60vh;
@@ -151,7 +151,7 @@ h1 {
   background-color: rgba(255, 10, 218, 0.46);
 }
 
-.backToInstructionPageFromTryAgainPage {
+.homepageFromTryAgainPage {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -161,7 +161,7 @@ h1 {
   border: 1px solid black;
 }
 
-.backToInstructionPageFromTryAgainPage:hover{
+.homepageFromTryAgainPage:hover{
   background-color: rgba(255, 10, 218, 0.46);
 }
 
@@ -219,6 +219,33 @@ h1 {
 }
 
 /*LEVEL TWO*/
+.levelTwoPage {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}
+
+.colorsForPlayerToPickFrom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.colorsForPlayerToPickFrom li{
+  font-family:'Syncopate', sans-serif;
+  font-size: 25px;
+  width: calc(30% - 3px);
+  margin: 15px 12px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.41);
+  border: 2px solid black;
+}
+
 .playLevelTwoButton {
   padding: 20px 40px;
   margin-top: 40px;
@@ -259,14 +286,14 @@ h1 {
   }
 }
 
-/*LEVEL 3*/
-/*.playerPassedLevelTwo {
+/*PLAYER PASSED LEVEL TWO*/
+.playerPassedLevelTwo {
   display: none;
   height: 60vh;
   border: 5px dotted black;
 }
 
-.nextLevelTwo {
+.yayPlayerWon {
   font-family: 'Monoton', cursive;
   font-size: 70px;
   font-weight: 400;
@@ -324,10 +351,10 @@ h1 {
 
 .playLevelThreeButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
-}*/
+}
 
 /*HOMEPAGE BUTTON*/
-.backToInstructionPageFromPlayerWonPage {
+.homepageFromPassedLevelOne {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -337,11 +364,11 @@ h1 {
   border: 1px solid black;
 }
 
-.backToInstructionPageFromPlayerWonPage:hover{
+.homepageFromPassedLevelOne:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
 
-/*.backToInstructionPageFromPlayerPassedLevelTwoPage {
+.homepageFromPassedLevelTwo {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -351,6 +378,6 @@ h1 {
   border: 1px solid black;
 }
 
-.backToInstructionPageFromPlayerPassedLevelTwoPage:hover{
+.homepageFromPassedLevelTwo:hover {
   background-color: rgba(255, 10, 218, 0.46);
-}*/
+}
