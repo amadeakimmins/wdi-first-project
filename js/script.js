@@ -15,9 +15,11 @@ function setup() {
   const $instructionPage = $('.instructionPage');
   const $levelOnePage = $('.levelOnePage');
   const $levelTwoPage = $('.levelTwoPage');
+  const $levelThreePage = $('.levelThreePage');
   const $tryAgainPage = $('.tryAgainPage');
   const $playerPassedLevelOnePage = $('.playerPassedLevelOne');
   const $playerPassedLevelTwoPage = $('.playerPassedLevelTwo');
+  const $playerPassedLevelThreePage = $('.playerPassedLevelThree');
   const $beginButton = $('.beginButton');
   const $displayTimerOnScreen = $('.timerDisplay');
   const $startAgainButton = $('.startAgainButton');
@@ -26,9 +28,11 @@ function setup() {
   let $rounds = $('.gameRounds li');
   const $finalScoreTime = $('.finalScoreTime');
   const $playLevelTwoButton = $('.playLevelTwoButton');
+  const $playLevelThreeButton = $('.playLevelThreeButton');
   const $homepageFromTryAgainPageButton = $('.homepageFromTryAgainPage');
   const $homepagePageFromPassedLevelOneButton = $('.homepageFromPassedLevelOne');
   const $homepagePageFromPassedLevelTwoButton = $('.homepageFromPassedLevelTwo');
+  const $homepagePageFromPassedLevelThreeButton = $('.homepageFromPassedLevelThree');
 
 
   function beginLevelOne(){
@@ -60,9 +64,11 @@ function setup() {
 
   function startAgain (){
     round = 0;
+    $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $tryAgainPage.hide();
     $playerPassedLevelOnePage.hide();
+    $playerPassedLevelTwoPage.hide();
     $levelOnePage.show();
     resetTimer();
     colorRandomlySelected();
@@ -84,6 +90,12 @@ function setup() {
     $displayColor.text(chosenWord).css('color', colorOfText);
   }
 
+  // LEVEL THREE CHANGE BACKGROUND COLOR
+  // function generateRandomBackgroundColor(){
+  //   const backGroundColor = colors[Math.floor(Math.random()*colors.length)];
+  //   $levelTwoPage.css('backGroundColor', backGroundColor);
+  // }
+
 
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
@@ -98,9 +110,12 @@ function setup() {
       if(level <= 1){
         $levelOnePage.hide();
         $playerPassedLevelOnePage.show();
-      }else {
+      }else if (level <= 2){
         $levelTwoPage.hide();
         $playerPassedLevelTwoPage.show();
+      } else {
+        $levelThreePage.hide();
+        $playerPassedLevelThreePage.show();
       }
       level++;
     } else {
@@ -119,6 +134,7 @@ function setup() {
     }else if(colorOfText !== $(e.target).text()){
       $levelOnePage.hide();
       $levelTwoPage.hide();
+      $levelThreePage.hide();
       $tryAgainPage.show();
       timeGiven = 8;
     }
@@ -134,27 +150,47 @@ function setup() {
     $levelTwoPage.show();
     resetTimer();
     colorRandomlySelected();
-
   }
 
+  function beginLevelThree() {
+    timeGiven = 8;
+    round = 0;
+    $rounds = $('.gameRounds li.levelThree');
+    console.log($rounds);
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $playerPassedLevelTwoPage.hide();
+    $levelThreePage.show();
+    resetTimer();
+    colorRandomlySelected();
+  }
 
   // HOMEPAGE
   function homepageFromPassedLevelOne() {
     timeGiven = 8;
     round = 0;
-    $rounds = $('.gameRounds li')
+    $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $playerPassedLevelOnePage.hide();
     $instructionPage.show();
-    resetTimer();
+    resetTimer()
   }
 
   function homepageFromPassedLevelTwo() {
     timeGiven = 8;
     round = 0;
-    $rounds = $('.gameRounds li')
+    $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $playerPassedLevelTwoPage.hide();
+    $instructionPage.show();
+    resetTimer();
+  }
+
+  function homepageFromPassedLevelThree() {
+    timeGiven = 8;
+    round = 0;
+    $rounds = $('.gameRounds li');
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $playerPassedLevelThreePage.hide();
     $instructionPage.show();
     resetTimer();
   }
@@ -162,7 +198,7 @@ function setup() {
   function homepageFromTryAgainPage() {
     timeGiven = 8;
     round = 0;
-    $rounds = $('.gameRounds li')
+    $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $tryAgainPage.hide();
     $instructionPage.show();
@@ -178,20 +214,24 @@ function setup() {
 
   $startAgainButton.on('click', startAgain);
 
-  $homepageFromTryAgainPageButton.on('click', homepageFromTryAgainPage);
-
   $playLevelTwoButton.on('click', beginLevelTwo);
+
+  $playLevelThreeButton.on('click', beginLevelThree);
+
+  $homepageFromTryAgainPageButton.on('click', homepageFromTryAgainPage);
 
   $homepagePageFromPassedLevelOneButton.on('click', homepageFromPassedLevelOne);
 
   $homepagePageFromPassedLevelTwoButton.on('click', homepageFromPassedLevelTwo);
+
+  $homepagePageFromPassedLevelThreeButton.on('click', homepageFromPassedLevelThree);
 
 
 }
 
 $(setup);
 
-//TOMORROW - ADD LEVEL 3 AND RANDOMISE COLORS AND REFACTOR CODE
+//TOMORROW - ADD LEVEL 3 CHANGING BACKGROUND AND LEVEL 4 RANDOMISE COLORS AND THEN REFACTOR CODE
 
 // TO RANDOMLY CHANGE THE CONTENT OF COLOR BUTTONS for LEVEL 3:
 //
