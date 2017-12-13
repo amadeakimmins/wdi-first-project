@@ -341,7 +341,7 @@ h1 {
 
 .playerWonLevelThree {
   font-family: 'Monoton', cursive;
-  font-size: 40px;
+  font-size: 70px;
   font-weight: 400;
   margin: 80px 20px 30px 20px;
   -webkit-animation-name:pulse;
@@ -378,6 +378,72 @@ h1 {
   }
 }
 
+.playLevelFourButton {
+  padding: 20px 40px;
+  margin-top: 40px;
+  background-color: rgba(255, 141, 10, 0.46);
+  font-family: 'Syncopate', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.playLevelFourButton:hover {
+  background-color: rgba(255, 10, 218, 0.46);
+}
+
+/*LEVEL 4*/
+.levelFourPage {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}
+
+/*PLAYER PASSED LEVEL 4*/
+.playerPassedLevelFour {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}
+
+.playerWonLevelFour {
+  font-family: 'Monoton', cursive;
+  font-size: 40px;
+  font-weight: 400;
+  margin: 80px 20px 30px 20px;
+  -webkit-animation-name:pulse;
+  animation-name: pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  75% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  75% {
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
 
 .overallScoreTime {
   font-family: 'Syncopate', sans-serif;
