@@ -1,5 +1,5 @@
 console.log('Ready!');
-let timeGiven = 10;
+let timeGiven = 8;
 let timeRemaining = timeGiven;
 let timerRunning = false;
 let timerId = null;
@@ -10,6 +10,7 @@ let round = 0;
 let level = 1;
 let startTime = null;
 let secondsTaken = null;
+let totalSecondsTaken = 0;
 
 function setup() {
 
@@ -28,10 +29,10 @@ function setup() {
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
   let $rounds = $('.gameRounds li');
   const $finalScoreTime = $('.finalScoreTime');
+  const $overallScoreTime = $('.overallScoreTime');
   const $playLevelTwoButton = $('.playLevelTwoButton');
   const $playLevelThreeButton = $('.playLevelThreeButton');
   const $homepage = $('.homepage');
-
 
   function beginLevelOne(){
     startTime = new Date().getTime();
@@ -55,7 +56,7 @@ function setup() {
         $levelTwoPage.hide();
         $levelThreePage.hide();
         $tryAgainPage.show();
-        timeGiven = 10;
+        timeGiven = 8;
       }
       timerRunning = true;
     }, 1000);
@@ -94,7 +95,7 @@ function setup() {
   // LEVEL THREE CHANGE BACKGROUND COLOR
   function generateRandomBackgroundColor(){
     const backGroundColor = backgroundColors[Math.floor(Math.random()*colors.length)];
-    console.log(backGroundColor);
+    // console.log(backGroundColor);
     $levelThreePage.css('background-color', backGroundColor);
   }
 
@@ -103,15 +104,19 @@ function setup() {
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
     console.log($rounds.eq(round).css('backgroundColor'));
     round++;
-    if (round >= 8){
-      console.log('in here','level:',level);
+    if (round >= 3){
+      // console.log('in here','level:',level);
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
       $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
+      totalSecondsTaken = totalSecondsTaken + parseFloat(secondsTaken);
+      // console.log(totalSecondsTaken);
+      $overallScoreTime.html(`${'You finished the game in:'}` + ' ' + totalSecondsTaken + ' ' + 'secs');
       // console.log('timer stopped because end of round');
       if(level <= 1){
         $levelOnePage.hide();
         $playerPassedLevelOnePage.show();
+
       }else if (level <= 2){
         $levelTwoPage.hide();
         $playerPassedLevelTwoPage.show();
@@ -140,13 +145,13 @@ function setup() {
       $levelTwoPage.hide();
       $levelThreePage.hide();
       $tryAgainPage.show();
-      timeGiven = 10;
+      timeGiven = 8;
     }
   }
 
   function beginLevelTwo (){
     startTime = new Date().getTime();
-    timeGiven = 10;
+    timeGiven = 8;
     round = 0;
     $rounds = $('.gameRounds li.levelTwo');
     console.log($rounds);
@@ -159,7 +164,7 @@ function setup() {
 
   function beginLevelThree() {
     startTime = new Date().getTime();
-    timeGiven = 10;
+    timeGiven = 9;
     round = 0;
     $rounds = $('.gameRounds li.levelThree');
     console.log($rounds);
@@ -172,7 +177,7 @@ function setup() {
   }
 
   function homepage() {
-    timeGiven = 10;
+    timeGiven = 8;
     level = 1;
     round = 0;
     $rounds = $('.gameRounds li');
@@ -184,8 +189,6 @@ function setup() {
     $instructionPage.show();
     clearInterval(timerId);
   }
-
-
 
   // BUTTON EVENTS
   $beginButton.on('click', beginLevelOne);
@@ -203,26 +206,3 @@ function setup() {
 }
 
 $(setup);
-
-//TOMORROW - ADD LEVEL 3 CHANGING BACKGROUND AND LEVEL 4 RANDOMISE COLORS AND THEN REFACTOR CODE
-
-// TO RANDOMLY CHANGE THE CONTENT OF COLOR BUTTONS for LEVEL 3:
-//
-// function randomlySelectedColorOptions() {
-//   const randomColorButtons = $colorButtons.get();
-//   randomColorButtons = randomColorButtons.sort(function() {
-//     return Math.round( Math.random()*colorButtons.length);
-//     randomColorButtons.forEach(i); {
-
-//     }
-//   })
-//
-//   const
-//   var ul = document.querySelector('ul');
-//   for (var i = ul.children.length; i >= 0; i--) {
-//       ul.appendChild(ul.children[Math.random() * i | 0]);
-//   }
-
-//
-//   const $colours = $($colourButtons).map(function(){
-//         return $(this).text(displayColour);

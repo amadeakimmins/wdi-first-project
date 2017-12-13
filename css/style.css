@@ -378,6 +378,14 @@ h1 {
   }
 }
 
+
+.overallScoreTime {
+  font-family: 'Syncopate', sans-serif;
+  font-size: 25px;
+  margin: 10px 100px;
+  padding-top: 10px;
+}
+
 /*HOMEPAGE BUTTON*/
 .homepage {
   padding: 20px 40px;
