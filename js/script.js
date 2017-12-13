@@ -29,6 +29,7 @@ function setup() {
   const $startAgainButton = $('.startAgainButton');
   const $displayColor = $('.colorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
+  const $levelFourColorButtons = $('.levelFourButtons');
   let $rounds = $('.gameRounds li');
   const $finalScoreTime = $('.finalScoreTime');
   const $overallScoreTime = $('.overallScoreTime');
@@ -104,41 +105,31 @@ function setup() {
     $levelThreePage.css('background-color', backGroundColor);
     $levelFourPage.css('background-color', backGroundColor);
   }
-  //
-  // function shuffleColourButtons(colorArray) {
-  //   colorArray = $colorButtons.map(function(){
-  //     return $(this).text();
-  //   });
-  //   console.log(colorArray);
-  //   let currentArray = colorArray.length, temporaryValue, randomArray;
-  //   while (0 !== currentArray) {
-  //     randomArray = Math.floor(Math.random() * currentArray);
-  //     currentArray -= 1;
-  //     temporaryValue = colorArray[currentArray];
-  //     colorArray[currentArray] = colorArray[randomArray];
-  //     colorArray[randomArray] = temporaryValue;
-  //   }
-  //   $colorButtons.text(colorArray);
-  // }
 
-  // function shuffleColourButtons(colors) {
-  //   console.log(colors);
-  //   let currentArray = colors.length, temporaryValue, randomArray;
-  //   while (0 !== currentArray) {
-  //     randomArray = Math.floor(Math.random() * currentArray);
-  //     currentArray -= 1;
-  //     temporaryValue = colors[currentArray];
-  //     colors[currentArray] = colors[randomArray];
-  //     colors[randomArray] = temporaryValue;
-  //   }
-  //   $colorButtons.text(colors);
-  // }
+  function shuffle(colors) {
+    let currentIndex = colors.length,
+      temporaryValue,
+      randomIndex;
+
+    while (0 !== currentIndex) {
+
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = colors[currentIndex];
+      colors[currentIndex] = colors[randomIndex];
+      colors[randomIndex] = temporaryValue;
+    }
+    $levelFourColorButtons.each((i, button)=>{
+      $(button).text(colors[i]);
+    });
+  }
 
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
     console.log($rounds.eq(round).css('backgroundColor'));
     round++;
-    if (round >= 4){
+    if (round >= 8){
       // console.log('in here','level:',level);
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
@@ -168,7 +159,7 @@ function setup() {
       // console.log('start timer again because not end of round yet');
       colorRandomlySelected();
       generateRandomBackgroundColor();
-      // shuffleColourButtons();
+      shuffle(colors);
     }
   }
 
@@ -226,7 +217,7 @@ function setup() {
     resetTimer();
     colorRandomlySelected();
     generateRandomBackgroundColor();
-    // shuffleColourButtons();
+    shuffle(colors);
   }
 
   function homepage() {
@@ -246,19 +237,12 @@ function setup() {
 
   // BUTTON EVENTS
   $beginButton.on('click', beginLevelOne);
-
   $colorButtons.on('click', checkForMatch);
-
   $startAgainButton.on('click', startAgain);
-
   $playLevelTwoButton.on('click', beginLevelTwo);
-
   $playLevelThreeButton.on('click', beginLevelThree);
-
   $playLevelFourButton.on('click', beginLevelFour);
-
   $homepage.on('click', homepage);
-
 }
 
 $(setup);
