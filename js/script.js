@@ -34,6 +34,7 @@ function setup() {
 
 
   function beginLevelOne(){
+    startTime = new Date().getTime();
     $instructionPage.hide();
     $levelOnePage.show();
     startTimer();
@@ -45,7 +46,6 @@ function setup() {
     $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerId = setInterval(() => {
       console.log('clock ticking');
-      startTime = new Date().getTime();
       timeRemaining--;
       $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
 
@@ -145,6 +145,7 @@ function setup() {
   }
 
   function beginLevelTwo (){
+    startTime = new Date().getTime();
     timeGiven = 10;
     round = 0;
     $rounds = $('.gameRounds li.levelTwo');
@@ -157,6 +158,7 @@ function setup() {
   }
 
   function beginLevelThree() {
+    startTime = new Date().getTime();
     timeGiven = 10;
     round = 0;
     $rounds = $('.gameRounds li.levelThree');
