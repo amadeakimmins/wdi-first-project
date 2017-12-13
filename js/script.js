@@ -1,5 +1,5 @@
 console.log('Ready!');
-let timeGiven = 8;
+let timeGiven = 10;
 let timeRemaining = timeGiven;
 let timerRunning = false;
 let timerId = null;
@@ -55,7 +55,7 @@ function setup() {
         $levelTwoPage.hide();
         $levelThreePage.hide();
         $tryAgainPage.show();
-        timeGiven = 8;
+        timeGiven = 10;
       }
       timerRunning = true;
     }, 1000);
@@ -140,12 +140,12 @@ function setup() {
       $levelTwoPage.hide();
       $levelThreePage.hide();
       $tryAgainPage.show();
-      timeGiven = 8;
+      timeGiven = 10;
     }
   }
 
   function beginLevelTwo (){
-    timeGiven = 8;
+    timeGiven = 10;
     round = 0;
     $rounds = $('.gameRounds li.levelTwo');
     console.log($rounds);
@@ -157,7 +157,7 @@ function setup() {
   }
 
   function beginLevelThree() {
-    timeGiven = 8;
+    timeGiven = 10;
     round = 0;
     $rounds = $('.gameRounds li.levelThree');
     console.log($rounds);
@@ -170,7 +170,8 @@ function setup() {
   }
 
   function homepage() {
-    timeGiven = 8;
+    timeGiven = 10;
+    level = 1;
     round = 0;
     $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
