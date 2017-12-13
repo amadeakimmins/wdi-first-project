@@ -50,7 +50,6 @@ function setup() {
     timeRemaining = timeGiven;
     $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
     timerId = setInterval(() => {
-      // console.log('clock ticking');
       timeRemaining--;
       $displayTimerOnScreen.text(`${timeRemaining + ' ' + 'secs'}`);
 
@@ -95,7 +94,6 @@ function setup() {
   // LEVEL 3 AND 4 CHANGE BACKGROUND COLOR
   function generateRandomBackgroundColor(){
     const backGroundColor = backgroundColors[Math.floor(Math.random()*colors.length)];
-    // console.log(backGroundColor);
     $levelThreePage.css('background-color', backGroundColor);
     $levelFourPage.css('background-color', backGroundColor);
   }
@@ -121,14 +119,11 @@ function setup() {
     console.log($rounds.eq(round).css('backgroundColor'));
     round++;
     if (round >= 8){
-      // console.log('in here','level:',level);
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
       $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
       totalSecondsTaken = totalSecondsTaken + parseFloat(secondsTaken);
-      // console.log(totalSecondsTaken);
       $overallScoreTime.html(`${'You finished the game in:'}` + ' ' + totalSecondsTaken + ' ' + 'secs');
-      // console.log('timer stopped because end of round');
       if(level <= 1){
         $levelOnePage.hide();
         $playerPassedLevelOnePage.show();
@@ -147,7 +142,6 @@ function setup() {
       timeGiven--;
       secondsTaken = 0;
       resetTimer();
-      // console.log('start timer again because not end of round yet');
       colorRandomlySelected();
       generateRandomBackgroundColor();
       shuffle(colors);
@@ -155,7 +149,6 @@ function setup() {
   }
 
   function checkForMatch(e){
-    // console.log(timeGiven, timeRemaining);
     if(colorOfText === $(e.target).text()){
       completedRound();
     }else if(colorOfText !== $(e.target).text()){
@@ -171,7 +164,6 @@ function setup() {
     timeGiven = 8;
     round = 0;
     $rounds = $('.gameRounds li.levelTwo');
-    // console.log($rounds);
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $playerPassedLevelOnePage.hide();
     $levelTwoPage.show();
@@ -184,7 +176,6 @@ function setup() {
     timeGiven = 9;
     round = 0;
     $rounds = $('.gameRounds li.levelThree');
-    // console.log($rounds);
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $playerPassedLevelTwoPage.hide();
     $levelThreePage.show();
@@ -198,7 +189,6 @@ function setup() {
     timeGiven = 9;
     round = 0;
     $rounds = $('.gameRounds li.levelFour');
-    // console.log($rounds);
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $playerPassedLevelThreePage.hide();
     $levelFourPage.show();
