@@ -8,6 +8,7 @@ let colorOfTextLevelFive = null;
 const colors = ['yellow', 'red', 'blue', 'green', 'purple', 'orange'];
 const colorsLevelFive = ['yellow', 'red', 'blue', 'green', 'purple', 'orange', 'white', 'black', 'pink', 'brown', 'grey', 'navy'];
 const backgroundColors = ['gold', 'crimson', 'lightskyblue', 'limegreen', 'darkorchid', 'darkorange'];
+const backgroundColorsLevelSix = ['gold', 'crimson', 'lightskyblue', 'limegreen', 'darkorchid', 'darkorange', 'whitesmoke', 'darkslategrey', 'saddlebrown', 'darkgrey', 'royalblue'];
 let round = 0;
 let level = 1;
 let startTime = null;
@@ -22,20 +23,23 @@ function setup() {
   const $levelThreePage = $('.levelThreePage');
   const $levelFourPage = $('.levelFourPage');
   const $levelFivePage = $('.levelFivePage');
+  const $levelSixPage = $('.levelSixPage');
   const $tryAgainPage = $('.tryAgainPage');
   const $playerPassedLevelOnePage = $('.playerPassedLevelOne');
   const $playerPassedLevelTwoPage = $('.playerPassedLevelTwo');
   const $playerPassedLevelThreePage = $('.playerPassedLevelThree');
   const $playerPassedLevelFourPage = $('.playerPassedLevelFour');
   const $playerPassedLevelFivePage = $('.playerPassedLevelFive');
+  const $playerPassedLevelSixPage = $('.playerPassedLevelSix');
   const $beginButton = $('.beginButton');
   const $displayTimerOnScreen = $('.timerDisplay');
   const $startAgainButton = $('.startAgainButton');
   const $displayColor = $('.colorWordWithDifferentColor');
   const $displayColorLevelFive = $('.levelFiveColorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
-  const $levelFourColorButtons = $('.levelFourButtons');
+  const $colorButtonsLevelFour = $('.levelFourButtons');
   const $colorButtonsLevelFive = $('.levelFiveButtons');
+  const $colorButtonsLevelSix = $('.levelSixButtons');
   let $rounds = $('.gameRounds li');
   const $finalScoreTime = $('.finalScoreTime');
   const $overallScoreTime = $('.overallScoreTime');
@@ -43,6 +47,7 @@ function setup() {
   const $playLevelThreeButton = $('.playLevelThreeButton');
   const $playLevelFourButton = $('.playLevelFourButton');
   const $playLevelFiveButton = $('.playLevelFiveButton');
+  const $playLevelSixButton = $('.playLevelSixButton');
   const $homepage = $('.homepage');
 
   function beginLevelOne(){
@@ -98,6 +103,13 @@ function setup() {
     $displayColor.text(chosenWord).css('color', colorOfText);
   }
 
+  // LEVEL 3 AND 4 CHANGE BACKGROUND COLOR
+  function generateRandomBackgroundColor(){
+    const backgroundColor = backgroundColors[Math.floor(Math.random()*backgroundColors.length)];
+    $levelThreePage.css('background-color', backgroundColor);
+    $levelFourPage.css('background-color', backgroundColor);
+  }
+
   // GENERERATE COLOURS FOR LEVEL 5
   function generateRandomColorLevelFive() {
     return colorsLevelFive[Math.floor(Math.random()*colorsLevelFive.length)];
@@ -109,13 +121,13 @@ function setup() {
     $displayColorLevelFive.text(chosenWordLevelFive).css('color', colorOfTextLevelFive);
   }
 
-  // LEVEL 3 AND 4 CHANGE BACKGROUND COLOR
-  function generateRandomBackgroundColor(){
-    const backGroundColor = backgroundColors[Math.floor(Math.random()*colors.length)];
-    $levelThreePage.css('background-color', backGroundColor);
-    $levelFourPage.css('background-color', backGroundColor);
+  // LEVEL 6 CHANGE BACKGROUND COLOR
+  function generateRandomBackgroundColorLevelSix(){
+    const backgroundColorLevelSix = backgroundColorsLevelSix[Math.floor(Math.random()*backgroundColorsLevelSix.length)];
+    $levelSixPage.css('background-color', backgroundColorLevelSix);
   }
 
+  // SHUFFLE LEVEL 4
   function shuffle(colors) {
     let currentIndex = colors.length,
       temporaryValue,
@@ -127,8 +139,25 @@ function setup() {
       colors[currentIndex] = colors[randomIndex];
       colors[randomIndex] = temporaryValue;
     }
-    $levelFourColorButtons.each((i, button)=>{
+    $colorButtonsLevelFour.each((i, button)=>{
       $(button).text(colors[i]);
+    });
+  }
+
+  // SHUFFLE LEVEL 6
+  function shuffleLevelSix(colorsLevelFive) {
+    let currentIndex = colorsLevelFive.length,
+      temporaryValue,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = colorsLevelFive[currentIndex];
+      colorsLevelFive[currentIndex] = colorsLevelFive[randomIndex];
+      colorsLevelFive[randomIndex] = temporaryValue;
+    }
+    $colorButtonsLevelSix.each((i, button)=>{
+      $(button).text(colorsLevelFive[i]);
     });
   }
 
@@ -153,9 +182,12 @@ function setup() {
       } else if (level <= 4){
         $levelFourPage.hide();
         $playerPassedLevelFourPage.show();
-      } else {
+      } else if (level <= 5){
         $levelFivePage.hide();
         $playerPassedLevelFivePage.show();
+      } else {
+        $levelSixPage.hide();
+        $playerPassedLevelSixPage.show();
       }
       level++;
     } else {
@@ -165,7 +197,9 @@ function setup() {
       colorRandomlySelected();
       colorRandomlySelectedLevelFive();
       generateRandomBackgroundColor();
+      generateRandomBackgroundColorLevelSix();
       shuffle(colors);
+      shuffleLevelSix(colorsLevelFive);
     }
   }
 
@@ -183,6 +217,18 @@ function setup() {
 
   // CHECK FOR MATCH LEVEL 5
   function checkForMatchLevelFive(e){
+    if(colorOfTextLevelFive === $(e.target).text()){
+      completedRound();
+    }else if(colorOfTextLevelFive !== $(e.target).text()){
+      clearInterval(timerId);
+      hidingLevelPages();
+      $tryAgainPage.show();
+      timeGiven = 10;
+    }
+  }
+
+  // CHECK FOR MATCH LEVEL 6
+  function checkForMatchLevelSix(e){
     if(colorOfTextLevelFive === $(e.target).text()){
       completedRound();
     }else if(colorOfTextLevelFive !== $(e.target).text()){
@@ -244,7 +290,19 @@ function setup() {
     colorRandomlySelectedLevelFive();
   }
 
-  // MAKE LEVEL FIVE WITH LOADS OF BUTTONS X12
+  function beginLevelSix() {
+    startTime = new Date().getTime();
+    timeGiven = 11;
+    round = 0;
+    $rounds = $('.gameRounds li.levelSix');
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $playerPassedLevelFivePage.hide();
+    $levelSixPage.show();
+    resetTimer();
+    colorRandomlySelectedLevelFive();
+    generateRandomBackgroundColorLevelSix();
+    shuffleLevelSix(colorsLevelFive);
+  }
 
   function homepage() {
     timeGiven = 10;
@@ -265,6 +323,7 @@ function setup() {
     $playerPassedLevelThreePage.hide();
     $playerPassedLevelFourPage.hide();
     $playerPassedLevelFivePage.hide();
+    $playerPassedLevelSixPage.hide();
   }
 
   function hidingLevelPages(){
@@ -273,17 +332,20 @@ function setup() {
     $levelThreePage.hide();
     $levelFourPage.hide();
     $levelFivePage.hide();
+    $levelSixPage.hide();
   }
 
   // BUTTON EVENTS
   $beginButton.on('click', beginLevelOne);
   $colorButtons.on('click', checkForMatch);
   $colorButtonsLevelFive.on('click', checkForMatchLevelFive);
+  $colorButtonsLevelSix.on('click', checkForMatchLevelSix);
   $startAgainButton.on('click', startAgain);
   $playLevelTwoButton.on('click', beginLevelTwo);
   $playLevelThreeButton.on('click', beginLevelThree);
   $playLevelFourButton.on('click', beginLevelFour);
   $playLevelFiveButton.on('click', beginLevelFive);
+  $playLevelSixButton.on('click', beginLevelSix);
   $homepage.on('click', homepage);
 }
 

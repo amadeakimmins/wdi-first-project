@@ -16,7 +16,8 @@
       <h2 class="instructions">Instructions</h2>
       <p class="explanationOfGame">Match the colour of the word shown but not the name of the word.</p><br>
       <p class="explanationOfGame">For example, if the word 'RED' is printed in a orange colour then you click the 'ORANGE' button NOT the red button.</p><br>
-      <p class="explanationOfGame">There will be 6 options to chose from. Each round is timed and the timer will decrease after every round so you've got to be quick!</p>
+      <p class="explanationOfGame">There will be 6 options to chose from. Each round is timed and the timer will decrease after every round so you've got to be quick!</p><br>
+      <p class="explanationOfGame">There will be 6 different levels of increasing difficulty. They will be explained at the beginning of each level.</p>
       <button type="button" name="button" class="beginButton">BEGIN</button>
     </div>
     <div class="levelOnePage">
@@ -108,7 +109,7 @@
       </div>
     </div>
     <div class="levelFivePage">
-      <h2 class="levelFiveColorWordWithDifferentColor level-2-animation"></h2>
+      <h2 class="levelFiveColorWordWithDifferentColor"></h2>
       <p class="timer">Timer: <span class="timerDisplay"><span></p>
         <ul class="levelFiveColorsForPlayerToPickFrom">
           <li class="levelFiveButtons">red</li>
@@ -135,6 +136,34 @@
         <li class="roundEight levelFive">8</li>
       </div>
     </div>
+    <div class="levelSixPage">
+      <h2 class="levelFiveColorWordWithDifferentColor level-2-animation"></h2>
+      <p class="timer">Timer: <span class="timerDisplay"><span></p>
+        <ul class="levelFiveColorsForPlayerToPickFrom">
+          <li class="levelSixButtons">red</li>
+          <li class="levelSixButtons">yellow</li>
+          <li class="levelSixButtons">green</li>
+          <li class="levelSixButtons">orange</li>
+          <li class="levelSixButtons">blue</li>
+          <li class="levelSixButtons">purple</li>
+          <li class="levelSixButtons">white</li>
+          <li class="levelSixButtons">black</li>
+          <li class="levelSixButtons">pink</li>
+          <li class="levelSixButtons">brown</li>
+          <li class="levelSixButtons">grey</li>
+          <li class="levelSixButtons">navy</li>
+        </ul>
+      <div class="gameRounds">
+        <li class="roundOne levelSix">1</li>
+        <li class="roundTwo levelSix">2</li>
+        <li class="roundThree levelSix">3</li>
+        <li class="roundFour levelSix">4</li>
+        <li class="roundFive levelSix">5</li>
+        <li class="roundSix levelSix">6</li>
+        <li class="roundSeven levelSix">7</li>
+        <li class="roundEight levelSix">8</li>
+      </div>
+    </div>
     <div class="tryAgainPage">
       <p class="playerTryAgain">UNLUCKY, <br> TRY AGAIN!</p>
       <button type="button" name="button" class="startAgainButton">START AGAIN</button>
@@ -142,30 +171,41 @@
     </div>
     <div class="playerPassedLevelOne">
       <p class="playerHasWon">YOU WIN!!!</p>
+      <p class="levelExplanation">Let's see how you handle a little bit of movement!</p>
       <p class="finalScoreTime"></p>
       <button type="button" name="button" class="playLevelTwoButton">PLAY LEVEL 2</button>
       <button type="button" name="button" class="homepage">HOMEPAGE</button>
     </div>
     <div class="playerPassedLevelTwo">
       <p class="yayPlayerWon">YAYYY!!!</p>
+      <p class="levelExplanation">Now we're going to make it even harder by changing the background colour!</p>
       <p class="finalScoreTime"></p>
       <button type="button" name="button" class="playLevelThreeButton">PLAY LEVEL 3</button>
       <button type="button" name="button" class="homepage">HOMEPAGE</button>
     </div>
     <div class="playerPassedLevelThree">
       <p class="playerWonLevelThree">KEEP GOING!!</p>
+      <p class="levelExplanation">That obviously wasn't hard enough, we're now going to shuffle the colour buttons after every round!</p>
       <p class="finalScoreTime"></p>
       <button type="button" name="button" class="playLevelFourButton">PLAY LEVEL 4</button>
       <button type="button" name="button" class="homepage">HOMEPAGE</button>
     </div>
     <div class="playerPassedLevelFour">
-      <p class="playerWonLevelFour">BONUS ROUND!!</p>
+      <p class="playerWonLevelFour">WOOOOHOOO!!</p>
+      <p class="levelExplanation">Now it's going to get really tricky - there will be 12 colour choices instead of 6.</p>
       <p class="finalScoreTime"></p>
       <button type="button" name="button" class="playLevelFiveButton">PLAY LEVEL 5</button>
       <button type="button" name="button" class="homepage">HOMEPAGE</button>
     </div>
     <div class="playerPassedLevelFive">
-      <p class="playerWonLevelFive">LOOK AT YOU GO!!</p>
+      <p class="playerWonLevelFive">LOOK AT YOU GO,<br>LAST LEVEL!</p>
+      <p class="levelExplanation">For the final level we are going to combine all the levels. Good luck!</p>
+      <p class="finalScoreTime"></p>
+      <button type="button" name="button" class="playLevelSixButton">PLAY LEVEL 6</button>
+      <button type="button" name="button" class="homepage">HOMEPAGE</button>
+    </div>
+    <div class="playerPassedLevelSix">
+      <p class="playerWonLevelSix">YOU BEAT THE GAME!!!</p>
       <p class="finalScoreTime"></p>
       <p class="overallScoreTime"></p>
       <button type="button" name="button" class="homepage">HOMEPAGE</button>
