@@ -55,6 +55,7 @@ function setup() {
         clearInterval(timerId);
         $levelOnePage.hide();
         $levelTwoPage.hide();
+        $levelThreePage.hide();
         $tryAgainPage.show();
         timeGiven = 8;
       }
@@ -91,10 +92,11 @@ function setup() {
   }
 
   // LEVEL THREE CHANGE BACKGROUND COLOR
-  // function generateRandomBackgroundColor(){
-  //   const backGroundColor = colors[Math.floor(Math.random()*colors.length)];
-  //   $levelTwoPage.css('backGroundColor', backGroundColor);
-  // }
+  function generateRandomBackgroundColor(){
+    const backGroundColor = colors[Math.floor(Math.random()*colors.length)];
+    console.log(backGroundColor);
+    $levelThreePage.css('backGroundColor', backGroundColor);
+  }
 
 
   function completedRound(){
@@ -124,6 +126,7 @@ function setup() {
       resetTimer();
       // console.log('start timer again because not end of round yet');
       colorRandomlySelected();
+      generateRandomBackgroundColor();
     }
   }
 
@@ -204,7 +207,6 @@ function setup() {
     $instructionPage.show();
     resetTimer();
   }
-
 
 
   // BUTTON EVENTS
