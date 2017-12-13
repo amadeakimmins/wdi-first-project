@@ -222,7 +222,7 @@ function setup() {
     $levelOnePage.hide();
     $levelTwoPage.hide();
     $levelThreePage.hide();
-    $levelFourPage.hide()
+    $levelFourPage.hide();
   }
 
   // BUTTON EVENTS
