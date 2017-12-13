@@ -1,10 +1,12 @@
 console.log('Ready!');
-let timeGiven = 8;
+let timeGiven = 10;
 let timeRemaining = timeGiven;
 let timerRunning = false;
 let timerId = null;
 let colorOfText = null;
+let colorOfTextLevelFive = null;
 const colors = ['yellow', 'red', 'blue', 'green', 'purple', 'orange'];
+const colorsLevelFive = ['yellow', 'red', 'blue', 'green', 'purple', 'orange', 'white', 'black', 'pink', 'brown', 'grey', 'navy'];
 const backgroundColors = ['gold', 'crimson', 'lightskyblue', 'limegreen', 'darkorchid', 'darkorange'];
 let round = 0;
 let level = 1;
@@ -19,23 +21,28 @@ function setup() {
   const $levelTwoPage = $('.levelTwoPage');
   const $levelThreePage = $('.levelThreePage');
   const $levelFourPage = $('.levelFourPage');
+  const $levelFivePage = $('.levelFivePage');
   const $tryAgainPage = $('.tryAgainPage');
   const $playerPassedLevelOnePage = $('.playerPassedLevelOne');
   const $playerPassedLevelTwoPage = $('.playerPassedLevelTwo');
   const $playerPassedLevelThreePage = $('.playerPassedLevelThree');
   const $playerPassedLevelFourPage = $('.playerPassedLevelFour');
+  const $playerPassedLevelFivePage = $('.playerPassedLevelFive');
   const $beginButton = $('.beginButton');
   const $displayTimerOnScreen = $('.timerDisplay');
   const $startAgainButton = $('.startAgainButton');
   const $displayColor = $('.colorWordWithDifferentColor');
+  const $displayColorLevelFive = $('.levelFiveColorWordWithDifferentColor');
   const $colorButtons = $('.colorsForPlayerToPickFrom li');
   const $levelFourColorButtons = $('.levelFourButtons');
+  const $colorButtonsLevelFive = $('.levelFiveButtons');
   let $rounds = $('.gameRounds li');
   const $finalScoreTime = $('.finalScoreTime');
   const $overallScoreTime = $('.overallScoreTime');
   const $playLevelTwoButton = $('.playLevelTwoButton');
   const $playLevelThreeButton = $('.playLevelThreeButton');
   const $playLevelFourButton = $('.playLevelFourButton');
+  const $playLevelFiveButton = $('.playLevelFiveButton');
   const $homepage = $('.homepage');
 
   function beginLevelOne(){
@@ -57,7 +64,7 @@ function setup() {
         clearInterval(timerId);
         hidingLevelPages();
         $tryAgainPage.show();
-        timeGiven = 8;
+        timeGiven = 10;
       }
       timerRunning = true;
     }, 1000);
@@ -91,6 +98,17 @@ function setup() {
     $displayColor.text(chosenWord).css('color', colorOfText);
   }
 
+  // GENERERATE COLOURS FOR LEVEL 5
+  function generateRandomColorLevelFive() {
+    return colorsLevelFive[Math.floor(Math.random()*colorsLevelFive.length)];
+  }
+
+  function colorRandomlySelectedLevelFive() {
+    const chosenWordLevelFive = generateRandomColorLevelFive();
+    colorOfTextLevelFive = generateRandomColorLevelFive();
+    $displayColorLevelFive.text(chosenWordLevelFive).css('color', colorOfTextLevelFive);
+  }
+
   // LEVEL 3 AND 4 CHANGE BACKGROUND COLOR
   function generateRandomBackgroundColor(){
     const backGroundColor = backgroundColors[Math.floor(Math.random()*colors.length)];
@@ -116,7 +134,6 @@ function setup() {
 
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
-    console.log($rounds.eq(round).css('backgroundColor'));
     round++;
     if (round >= 8){
       clearInterval(timerId);
@@ -127,15 +144,18 @@ function setup() {
       if(level <= 1){
         $levelOnePage.hide();
         $playerPassedLevelOnePage.show();
-      }else if (level <= 2){
+      } else if (level <= 2){
         $levelTwoPage.hide();
         $playerPassedLevelTwoPage.show();
       } else if (level <= 3){
         $levelThreePage.hide();
         $playerPassedLevelThreePage.show();
-      } else {
+      } else if (level <= 4){
         $levelFourPage.hide();
         $playerPassedLevelFourPage.show();
+      } else {
+        $levelFivePage.hide();
+        $playerPassedLevelFivePage.show();
       }
       level++;
     } else {
@@ -143,10 +163,12 @@ function setup() {
       secondsTaken = 0;
       resetTimer();
       colorRandomlySelected();
+      colorRandomlySelectedLevelFive();
       generateRandomBackgroundColor();
       shuffle(colors);
     }
   }
+
 
   function checkForMatch(e){
     if(colorOfText === $(e.target).text()){
@@ -155,13 +177,25 @@ function setup() {
       clearInterval(timerId);
       hidingLevelPages();
       $tryAgainPage.show();
-      timeGiven = 8;
+      timeGiven = 10;
+    }
+  }
+
+  // CHECK FOR MATCH LEVEL 5
+  function checkForMatchLevelFive(e){
+    if(colorOfTextLevelFive === $(e.target).text()){
+      completedRound();
+    }else if(colorOfTextLevelFive !== $(e.target).text()){
+      clearInterval(timerId);
+      hidingLevelPages();
+      $tryAgainPage.show();
+      timeGiven = 10;
     }
   }
 
   function beginLevelTwo (){
     startTime = new Date().getTime();
-    timeGiven = 8;
+    timeGiven = 9;
     round = 0;
     $rounds = $('.gameRounds li.levelTwo');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
@@ -186,7 +220,7 @@ function setup() {
 
   function beginLevelFour() {
     startTime = new Date().getTime();
-    timeGiven = 9;
+    timeGiven = 10;
     round = 0;
     $rounds = $('.gameRounds li.levelFour');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
@@ -198,8 +232,22 @@ function setup() {
     shuffle(colors);
   }
 
+  function beginLevelFive() {
+    startTime = new Date().getTime();
+    timeGiven = 10;
+    round = 0;
+    $rounds = $('.gameRounds li.levelFive');
+    $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
+    $playerPassedLevelFourPage.hide();
+    $levelFivePage.show();
+    resetTimer();
+    colorRandomlySelectedLevelFive();
+  }
+
+  // MAKE LEVEL FIVE WITH LOADS OF BUTTONS X12
+
   function homepage() {
-    timeGiven = 8;
+    timeGiven = 10;
     level = 1;
     round = 0;
     $rounds = $('.gameRounds li');
@@ -216,6 +264,7 @@ function setup() {
     $playerPassedLevelTwoPage.hide();
     $playerPassedLevelThreePage.hide();
     $playerPassedLevelFourPage.hide();
+    $playerPassedLevelFivePage.hide();
   }
 
   function hidingLevelPages(){
@@ -223,15 +272,18 @@ function setup() {
     $levelTwoPage.hide();
     $levelThreePage.hide();
     $levelFourPage.hide();
+    $levelFivePage.hide();
   }
 
   // BUTTON EVENTS
   $beginButton.on('click', beginLevelOne);
   $colorButtons.on('click', checkForMatch);
+  $colorButtonsLevelFive.on('click', checkForMatchLevelFive);
   $startAgainButton.on('click', startAgain);
   $playLevelTwoButton.on('click', beginLevelTwo);
   $playLevelThreeButton.on('click', beginLevelThree);
   $playLevelFourButton.on('click', beginLevelFour);
+  $playLevelFiveButton.on('click', beginLevelFive);
   $homepage.on('click', homepage);
 }
 

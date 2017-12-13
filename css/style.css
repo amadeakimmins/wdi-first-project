@@ -443,6 +443,73 @@ h1 {
   }
 }
 
+.playLevelFiveButton {
+  padding: 20px 40px;
+  margin-top: 40px;
+  background-color: rgba(255, 141, 10, 0.46);
+  font-family: 'Syncopate', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.playLevelFiveButton:hover {
+  background-color: rgba(255, 10, 218, 0.46);
+}
+
+/*LEVEL 5*/
+.levelFivePage {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}
+
+.levelFiveColorWordWithDifferentColor {
+  font-size: 60px;
+  font-family: 'Monoton', cursive;
+  font-weight: 100;
+  color: rgba(250, 0, 0, 1);
+  margin: 15px 150px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.levelFiveColorsForPlayerToPickFrom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.levelFiveColorsForPlayerToPickFrom li {
+  font-family:'Syncopate', sans-serif;
+  font-size: 20px;
+  width: calc(30% - 3px);
+  margin: 5px 10px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.41);
+  border: 2px solid black;
+}
+
+/*PLAYER PASSED LEVEL 5*/
+.playerPassedLevelFive {
+  display: none;
+  height: 60vh;
+  border: 5px dotted black;
+}
+
+.playerWonLevelFive {
+  font-family: 'Monoton', cursive;
+  font-size: 40px;
+  font-weight: 400;
+  margin: 80px 20px 30px 20px;
+}
+
 .overallScoreTime {
   font-family: 'Syncopate', sans-serif;
   font-size: 25px;
@@ -466,7 +533,7 @@ h1 {
 }
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 875px) {
   body {
     background-size: cover;
   }
