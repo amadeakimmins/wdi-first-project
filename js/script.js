@@ -56,10 +56,7 @@ function setup() {
 
       if(timeRemaining === 0) {
         clearInterval(timerId);
-        $levelOnePage.hide();
-        $levelTwoPage.hide();
-        $levelThreePage.hide();
-        $levelFourPage.hide();
+        hidingLevelPages();
         $tryAgainPage.show();
         timeGiven = 8;
       }
@@ -73,10 +70,7 @@ function setup() {
     $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $tryAgainPage.hide();
-    $playerPassedLevelOnePage.hide();
-    $playerPassedLevelTwoPage.hide();
-    $playerPassedLevelThreePage.hide();
-    $playerPassedLevelFourPage.hide();
+    hidingPassedLevelPages();
     $levelOnePage.show();
     resetTimer();
     colorRandomlySelected();
@@ -110,12 +104,9 @@ function setup() {
     let currentIndex = colors.length,
       temporaryValue,
       randomIndex;
-
     while (0 !== currentIndex) {
-
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-
       temporaryValue = colors[currentIndex];
       colors[currentIndex] = colors[randomIndex];
       colors[randomIndex] = temporaryValue;
@@ -169,10 +160,7 @@ function setup() {
       completedRound();
     }else if(colorOfText !== $(e.target).text()){
       clearInterval(timerId);
-      $levelOnePage.hide();
-      $levelTwoPage.hide();
-      $levelThreePage.hide();
-      $levelFourPage.hide();
+      hidingLevelPages();
       $tryAgainPage.show();
       timeGiven = 8;
     }
@@ -227,12 +215,24 @@ function setup() {
     $rounds = $('.gameRounds li');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
     $tryAgainPage.hide();
+    hidingPassedLevelPages();
+    $instructionPage.show();
+    clearInterval(timerId);
+  }
+
+  // HIDING PAGES
+  function hidingPassedLevelPages() {
     $playerPassedLevelOnePage.hide();
     $playerPassedLevelTwoPage.hide();
     $playerPassedLevelThreePage.hide();
     $playerPassedLevelFourPage.hide();
-    $instructionPage.show();
-    clearInterval(timerId);
+  }
+
+  function hidingLevelPages(){
+    $levelOnePage.hide();
+    $levelTwoPage.hide();
+    $levelThreePage.hide();
+    $levelFourPage.hide()
   }
 
   // BUTTON EVENTS
