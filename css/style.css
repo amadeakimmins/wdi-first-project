@@ -379,8 +379,7 @@ h1 {
 }
 
 /*HOMEPAGE BUTTON*/
-/*passed level 1*/
-.homepageFromPassedLevelOne {
+.homepage {
   padding: 20px 40px;
   margin-top: 40px;
   background-color: rgba(255, 141, 10, 0.46);
@@ -390,35 +389,6 @@ h1 {
   border: 1px solid black;
 }
 
-.homepageFromPassedLevelOne:hover {
-  background-color: rgba(255, 10, 218, 0.46);
-}
-/*passed level 2*/
-.homepageFromPassedLevelTwo {
-  padding: 20px 40px;
-  margin-top: 40px;
-  background-color: rgba(255, 141, 10, 0.46);
-  font-family: 'Syncopate', sans-serif;
-  font-size: 25px;
-  font-weight: bold;
-  border: 1px solid black;
-}
-
-.homepageFromPassedLevelTwo:hover {
-  background-color: rgba(255, 10, 218, 0.46);
-}
-
-/*passed level 3*/
-.homepageFromPassedLevelThree {
-  padding: 20px 40px;
-  margin-top: 40px;
-  background-color: rgba(255, 141, 10, 0.46);
-  font-family: 'Syncopate', sans-serif;
-  font-size: 25px;
-  font-weight: bold;
-  border: 1px solid black;
-}
-
-.homepageFromPassedLevelThree:hover {
+.homepage {
   background-color: rgba(255, 10, 218, 0.46);
 }
