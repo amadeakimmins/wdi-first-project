@@ -6,10 +6,14 @@
 /*BODY*/
 body {
   text-align: center;
-  background: url(https://i.imgur.com/QkqCmu9.jpg);
+  background: url(https://i.imgur.com/QkqCmu9.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 /*MAIN*/
@@ -641,7 +645,33 @@ h1 {
 }
 
 
-@media only screen and (max-width: 875px) {
+@media only screen and (max-width: 375px) {
+  /*MAIN*/
   body {
     background-size: cover;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  /*INSTRUCTION PAGE*/
+  .instructionPage {
+    height: 50vh;
+    border: 3px dotted black;
+    max-width: 360px;
+  }
+
+  .instructions {
+    font-size: 30px;
+  }
+
+  .explanationOfGame {
+    font-size: 10px;
+    max-width: 340px;
+  }
+
+  .beginButton {
+    padding: 10px 20px;
+    font-size: 20px;
   }

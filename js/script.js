@@ -50,6 +50,12 @@ function setup() {
   const $playLevelSixButton = $('.playLevelSixButton');
   const $homepage = $('.homepage');
 
+  // TO DO THURSDAY:
+  // 1.make responsive
+  // 2.deploy to heroku - to test on mobile
+  // 3.make project readme.md - ask for examples
+  // 4.local storage to save high scores
+
   function beginLevelOne(){
     startTime = new Date().getTime();
     $instructionPage.hide();
