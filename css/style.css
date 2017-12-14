@@ -648,107 +648,34 @@ h1 {
 
 /*RESPONSIVE*/
 
+/*@media only screen and (max-width: 1024px) {
+  /*MAIN*/
+  /*h1 {
+    font-size: 80px;
+    margin: 80px 20px 40px 20px;
+  }*/
+
+  /*INSTRUCTION PAGE*/
+  /*.instructions {
+    font-size: 70px;
+    margin: 50px 0px;
+  }
+
+  .explanationOfGame {
+    font-size: 25px;
+    width: 680px;
+  }
+
+  .beginButton {
+    margin-top: 35px;
+    font-size: 45px;
+  }*/
+
 @media only screen and (max-width: 735px) {
   /*MAIN*/
-  h1 {
-    font-size: 60px;
-    margin: 30px 20px;
+  main{
+    width: 100%;
   }
-
-  /*INSTRUCTION PAGE*/
-  .instructionPage {
-    max-width: 550px;
-  }
-
-  .instructions {
-    font-size: 48px;
-    margin-bottom: 30px;
-  }
-
-  .explanationOfGame {
-    font-size: 18px;
-    width: 500px;
-  }
-
-  .beginButton {
-    margin-top: 40px;
-    font-size: 22px;
-  }
-
-
-}
-
-@media only screen and (max-width: 580px) {
-  /*MAIN*/
-  h1 {
-    font-size: 53px;
-    margin: 30px 20px;
-  }
-
-  /*INSTRUCTION PAGE*/
-  .instructionPage {
-    max-width: 520px;
-  }
-
-  .explanationOfGame {
-    font-size: 17px;
-    max-width: 470px;
-  }
-}
-
-@media only screen and (max-width: 520px) {
-  /*MAIN*/
-  h1 {
-    font-size: 48px;
-    margin: 30px 20px;
-  }
-
-  /*INSTRUCTION PAGE*/
-  .instructionPage {
-    max-width: 450px;
-  }
-
-  .explanationOfGame {
-    max-width: 380px;
-  }
-
-  .beginButton {
-    margin-top: 30px;
-}
-
-@media only screen and (max-width: 375px) {
-  /*MAIN*/
-  h1 {
-    font-size: 36px;
-  }
-
-  /*INSTRUCTION PAGE*/
-  .instructionPage {
-    height: 60vh;
-    max-width: 342px;
-    border: 4px dotted black;
-  }
-
-  .instructions {
-    font-size: 35px;
-    margin-bottom: 20px;
-  }
-
-
-  .explanationOfGame {
-    font-size: 15px;
-    max-width: 318px;
-  }
-
-  .beginButton {
-    padding: 10px 20px;
-    font-size: 20px;
-    margin-top: 15px;
-}
-
-
-@media only screen and (max-width: 320px) {
-  /*MAIN*/
   h1 {
     font-size: 30px;
     margin: 30px 20px;
@@ -756,21 +683,27 @@ h1 {
 
   /*INSTRUCTION PAGE*/
   .instructionPage {
-    height: 55vh;
-    max-width: 295px;
+    max-width: 80%;
+    margin: 0 auto;
   }
 
   .instructions {
-    font-size: 28px;
-    margin: 10px;
+    font-size: 25px;
+    margin-bottom: 30px;
+    max-width: 80%
+    margin: auto;
   }
 
   .explanationOfGame {
-    font-size: 10px;
-    max-width: 280px;
+    font-size: 15px;
+    width: 80%;
   }
 
   .beginButton {
-    padding: 5px 15px;
-    font-size: 18px;
+    margin-top: 30px;
+    padding: 10px 15px;
+    font-size: 15px;
   }
+
+
+}
