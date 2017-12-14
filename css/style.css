@@ -652,18 +652,18 @@ h1 {
 
   .instructions {
     font-size: 25px;
-    margin-bottom: 30px;
+    margin-bottom: 7px;
     max-width: 80%
     margin: auto;
   }
 
   .explanationOfGame {
-    font-size: 15px;
+    font-size: 12px;
     width: 80%;
   }
 
   .beginButton {
-    margin-top: 20px;
+    margin-top: 5px;
     padding: 10px 15px;
     font-size: 15px;
   }
@@ -685,15 +685,19 @@ h1 {
     padding-top: 0;
   }
 
+  .colorsForPlayerToPickFrom{
+    justify-content: space-around;
+  }
+
   .colorsForPlayerToPickFrom li {
     font-size: 17px;
     width: calc(25% - 2px);
     margin: 10px 15px;
-    height: 60px;
+    height: 40px;
   }
 
   .gameRounds li {
-    margin: 10px 5px;
+    margin: 10px 2px;
   }
 
   /*TRY AGAIN PAGE*/
@@ -776,6 +780,7 @@ h1 {
 
   .playerWonLevelThree {
     font-size: 35px;
+    margin-top: 30px
   }
 
   .playLevelFourButton {
@@ -797,6 +802,7 @@ h1 {
   }
 
   .playerWonLevelFour {
+    margin: 30px 20px;
     font-size: 25px;
   }
 
@@ -820,8 +826,8 @@ h1 {
   .levelFiveColorsForPlayerToPickFrom li {
     font-size: 17px;
     width: calc(25% - 3px);
-    margin: 10px 15px;
-    height: 40px;
+    margin: 10px;
+    height: 30px;
   }
 
   /*PLAYER PASSED LEVEL 5*/
@@ -832,6 +838,7 @@ h1 {
 
   .playerWonLevelFive {
     font-size: 30px;
+    margin: 20px;
   }
 
   .playLevelSixButton {
@@ -865,7 +872,7 @@ h1 {
   /*HOMEPAGE BUTTON*/
   .homepage {
     padding: 10px 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 15px;
   }
 
