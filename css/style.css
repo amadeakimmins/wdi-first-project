@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  /*border: 1px solid black;*/
 }
 
 /*BODY*/
@@ -60,6 +59,7 @@ h1 {
 .beginButton:hover {
   background-color: rgba(255, 10, 218, 0.46);
 }
+
 /*LEVEL 1*/
 .levelOnePage {
   display: none;
@@ -150,20 +150,6 @@ h1 {
 }
 
 .startAgainButton:hover {
-  background-color: rgba(255, 10, 218, 0.46);
-}
-
-.homepageFromTryAgainPage {
-  padding: 20px 40px;
-  margin-top: 40px;
-  background-color: rgba(255, 141, 10, 0.46);
-  font-family: 'Syncopate', sans-serif;
-  font-size: 25px;
-  font-weight: bold;
-  border: 1px solid black;
-}
-
-.homepageFromTryAgainPage:hover{
   background-color: rgba(255, 10, 218, 0.46);
 }
 
@@ -648,29 +634,6 @@ h1 {
 
 /*RESPONSIVE*/
 
-/*@media only screen and (max-width: 1024px) {
-  /*MAIN*/
-  /*h1 {
-    font-size: 80px;
-    margin: 80px 20px 40px 20px;
-  }*/
-
-  /*INSTRUCTION PAGE*/
-  /*.instructions {
-    font-size: 70px;
-    margin: 50px 0px;
-  }
-
-  .explanationOfGame {
-    font-size: 25px;
-    width: 680px;
-  }
-
-  .beginButton {
-    margin-top: 35px;
-    font-size: 45px;
-  }*/
-
 @media only screen and (max-width: 735px) {
   /*MAIN*/
   main{
@@ -700,12 +663,12 @@ h1 {
   }
 
   .beginButton {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 10px 15px;
     font-size: 15px;
   }
 
-  /*LEVEL 1*/
+  /*LEVEL 1-4 PAGES*/
   .levelOnePage {
     max-width: 80%;
     margin: 0 auto;
@@ -731,6 +694,179 @@ h1 {
 
   .gameRounds li {
     margin: 10px 5px;
+  }
+
+  /*TRY AGAIN PAGE*/
+  .tryAgainPage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .playerTryAgain {
+    font-size: 30px;
+  }
+
+  .startAgainButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  /*EXPLANATION OF LEVELS*/
+  .levelExplanation {
+    font-size: 15px;
+    max-width: 80%;
+  }
+
+  /*PLAYER PASSED LEVEL 1*/
+  .playerPassedLevelOne {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .playerHasWon {
+    font-size: 35px;
+  }
+
+  .finalScoreTime {
+    font-size: 15px;
+    max-width: 80%;
+    margin: auto;
+  }
+
+  .playLevelTwoButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  /*LEVEL TWO*/
+  .levelTwoPage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  /*PLAYER PASSED LEVEL TWO*/
+  .playerPassedLevelTwo {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .yayPlayerWon {
+    font-size: 35px;
+  }
+
+  .playLevelThreeButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  /*LEVEL THREE*/
+  .levelThreePage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  /*PLAYER PASSED LEVEL THREE*/
+  .playerPassedLevelThree {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .playerWonLevelThree {
+    font-size: 35px;
+  }
+
+  .playLevelFourButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  /*LEVEL 4*/
+  .levelFourPage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  /*PLAYER PASSED LEVEL 4*/
+  .playerPassedLevelFour {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .playerWonLevelFour {
+    font-size: 25px;
+  }
+
+  .playLevelFiveButton {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  /*LEVEL 5*/
+  .levelFivePage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .levelFiveColorWordWithDifferentColor {
+    font-size: 45px;
+    margin: 20px 80px;
+  }
+
+  .levelFiveColorsForPlayerToPickFrom li {
+    font-size: 17px;
+    width: calc(25% - 3px);
+    margin: 10px 15px;
+    height: 40px;
+  }
+
+  /*PLAYER PASSED LEVEL 5*/
+  .playerPassedLevelFive {
+      max-width: 80%;
+      margin: 0 auto;
+  }
+
+  .playerWonLevelFive {
+    font-size: 30px;
+  }
+
+  .playLevelSixButton {
+    padding: 10px 20px;
+    margin-top: 40px;
+    font-size: 15px;
+  }
+
+  /*LEVEL 6*/
+  .levelSixPage {
+      max-width: 80%;
+      margin: 0 auto;
+  }
+
+  /*PLAYER PASSED LEVEL 6*/
+  .playerPassedLevelSix {
+      max-width: 80%;
+      margin: 0 auto;
+  }
+
+  .playerWonLevelSix {
+    font-size: 30px;
+  }
+
+  .overallScoreTime {
+    font-size: 15px;
+    max-width: 80%;
+    margin: auto;
+  }
+
+  /*HOMEPAGE BUTTON*/
+  .homepage {
+    padding: 10px 20px;
+    margin-top: 30px;
+    font-size: 15px;
   }
 
 }
