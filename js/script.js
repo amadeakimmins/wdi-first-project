@@ -170,7 +170,7 @@ function setup() {
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
     round++;
-    if (round >= 1){
+    if (round >= 8){
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
       $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
