@@ -705,5 +705,32 @@ h1 {
     font-size: 15px;
   }
 
+  /*LEVEL 1*/
+  .levelOnePage {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .colorWordWithDifferentColor {
+    font-size: 45px;
+    margin: 20px 80px;
+  }
+
+  .timer {
+    font-size: 18px;
+    margin: auto;
+    padding-top: 0;
+  }
+
+  .colorsForPlayerToPickFrom li {
+    font-size: 17px;
+    width: calc(25% - 2px);
+    margin: 10px 15px;
+    height: 60px;
+  }
+
+  .gameRounds li {
+    margin: 10px 5px;
+  }
 
 }
