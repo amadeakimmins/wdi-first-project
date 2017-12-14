@@ -60,15 +60,15 @@ I found building the levels challenging because, at first, I attempted to use th
 
 #### Wins
 
-I really enjoyed building this game and I am really happy with the way it looks and that all the levels are functioning. I built a lot more than I was expecting.
+I really enjoyed building this game and I am really happy with the way it looks and that all the levels are functioning. I built a lot more levels than I was expecting. It was really satisfying when it started working which made up for when I got frustrated trying to make something work.
 
-I am also really pleased that the timer is keeping score of how long each level took as well as the entire time it took to complete the game.
+I am also really pleased with the timer and that it is keeping score of how long each level took at the end as well as the entire time it took to complete the game and showing this on the last page. This makes the game more competitive.
 
 
 #### Future features
 
-I would like to add the ability to store the players name on the homepage and then store their high scores.
+To make the game even more competitive I would like to add the ability to have a leaderboard. I would like to add a feature where the player inputs their name before they start so that at the end their score can be stored to find out who has the highest score.
 
-Sound effects when a level is passed or failed and when the whole game is won.
+I would like to try and refactor the code that I have for the levels, if possible, to make it more DRY. For example, finding a way to only have one page for the game and the ability to change the features of the game depending on the leve through the same page. This would make the code in the HTML, CSS and jQuery a lot shorter and more concise.
 
-I would like to try and refactor the code for the levels, if possible, to make it more DRY.
+Add sound effects every time a level is passed or failed and when the whole game is won.
