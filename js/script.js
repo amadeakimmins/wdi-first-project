@@ -50,10 +50,6 @@ function setup() {
   const $playLevelSixButton = $('.playLevelSixButton');
   const $homepage = $('.homepage');
 
-  // TO DO THURSDAY:
-  // 3.make project readme.md - ask for examples
-  // 4.local storage to save high scores
-
   function beginLevelOne(){
     startTime = new Date().getTime();
     $instructionPage.hide();
@@ -168,12 +164,12 @@ function setup() {
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
     round++;
-    if (round >= 8){
+    if (round >= 3){
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
       $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
       totalSecondsTaken = totalSecondsTaken + parseFloat(secondsTaken);
-      $overallScoreTime.html(`${'You finished the game in:'}` + ' ' + totalSecondsTaken + ' ' + 'secs');
+      $overallScoreTime.html(`${'You finished the game in:'}` + ' ' + totalSecondsTaken.toFixed(1) + ' ' + 'secs');
       if(level <= 1){
         $levelOnePage.hide();
         $playerPassedLevelOnePage.show();
