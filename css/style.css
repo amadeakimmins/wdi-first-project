@@ -680,7 +680,7 @@ h1 {
 
   .colorWordWithDifferentColor {
     font-size: 45px;
-    margin: 20px;
+    margin: 20px 30px;
   }
 
   .timer {
@@ -824,7 +824,7 @@ h1 {
 
   .levelFiveColorWordWithDifferentColor {
     font-size: 45px;
-    margin: 20px;
+    margin: 20px 30px;
   }
 
   .levelFiveColorsForPlayerToPickFrom li {
