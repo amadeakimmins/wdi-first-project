@@ -69,6 +69,6 @@ I am also really pleased with the timer and that it is keeping score of how long
 
 To make the game even more competitive I would like to add the ability to have a leaderboard. I would like to add a feature where the player inputs their name before they start so that at the end their score can be stored to find out who has the highest score.
 
-I would like to refactor the code that I have for the levels and buttons, if possible, to make it more DRY. For example, finding a way to only have one page for the game and the ability to change the features of the game depending on the level through the same page. This would make the code in the HTML, CSS and jQuery a lot shorter and more concise.
+I would like to refactor the code  that I have more for the levels, the buttons and hiding the level divs to make it more DRY. For example, finding a way to only have one page for the game and the ability to change the features of the game depending on the level through the same page. This would make the code in the HTML, CSS and jQuery a lot shorter and more concise.
 
 Add sound effects every time a level is passed or failed and when the whole game is won.

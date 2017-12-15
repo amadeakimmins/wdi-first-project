@@ -6,7 +6,7 @@ let timerId = null;
 let colorOfText = null;
 let colorOfTextLevelFive = null;
 const colors = ['yellow', 'red', 'blue', 'green', 'purple', 'orange'];
-const colorsLevelFive = ['yellow', 'red', 'blue', 'green', 'purple', 'orange', 'white', 'black', 'pink', 'brown', 'grey', 'navy'];
+const colorsLevelFive = ['yellow', 'red', 'blue', 'green', 'purple', 'orange', 'white', 'black', 'hotPink', 'cyan', 'grey', 'skyBlue'];
 const backgroundColors = ['gold', 'crimson', 'lightskyblue', 'limegreen', 'darkorchid', 'darkorange'];
 const backgroundColorsLevelSix = ['gold', 'crimson', 'lightskyblue', 'limegreen', 'darkorchid', 'darkorange', 'whitesmoke', 'darkslategrey', 'saddlebrown', 'darkgrey', 'royalblue'];
 let round = 0;
@@ -164,7 +164,7 @@ function setup() {
   function completedRound(){
     $rounds.eq(round).css('backgroundColor', 'rgba(0,0,0,1)');
     round++;
-    if (round >= 6){
+    if (round >= 8){
       clearInterval(timerId);
       secondsTaken = (((new Date().getTime() - startTime)/1000).toFixed(1));
       $finalScoreTime.html(`${'You finished the level in:'}` + ' ' + secondsTaken + ' ' + 'secs');
@@ -203,6 +203,7 @@ function setup() {
     }
   }
 
+  // CHECK FOR MATCH LEVEL 1-4
   function checkForMatch(e){
     if(colorOfText === $(e.target).text()){
       completedRound();
@@ -279,7 +280,7 @@ function setup() {
 
   function beginLevelFive() {
     startTime = new Date().getTime();
-    timeGiven = 10;
+    timeGiven = 11;
     round = 0;
     $rounds = $('.gameRounds li.levelFive');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
@@ -291,7 +292,7 @@ function setup() {
 
   function beginLevelSix() {
     startTime = new Date().getTime();
-    timeGiven = 11;
+    timeGiven = 12;
     round = 0;
     $rounds = $('.gameRounds li.levelSix');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
