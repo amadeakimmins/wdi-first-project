@@ -291,7 +291,7 @@ function setup() {
 
   function beginLevelSix() {
     startTime = new Date().getTime();
-    timeGiven = 12;
+    timeGiven = 11;
     round = 0;
     $rounds = $('.gameRounds li.levelSix');
     $rounds.css('backgroundColor', 'rgba(255, 255, 255, 0.41)');
