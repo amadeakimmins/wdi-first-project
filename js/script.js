@@ -1,4 +1,3 @@
-console.log('Ready!');
 let timeGiven = 10;
 let timeRemaining = timeGiven;
 let timerRunning = false;

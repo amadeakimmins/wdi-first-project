@@ -54,7 +54,7 @@ This game is inspired by the effect found in Psychology, called the Stroop effec
 
 #### Challenges and Problems
 
-The distinction between the colours is not entirely clear, especially in level 5 and 6. This was a problem because I couldn't use any colour I wanted to make it easier to tell them apart. This is because the colours used to print the word were also used in the CSS to produce the colour on the screen and I needed it to be this way in order to shuffle the buttons.
+The distinction between the colours is not always clear, especially in level 5 and 6. The colour names shown in the buttons is what determines the colour of the word, therefore I was limited to a smaller amount of colour names that I could use. I needed it to be this way in order to shuffle the buttons.
 
 I found building the levels challenging because, at first, I attempted to use the same div for all the levels and to add classes to change the different features. This, however, became more complicated when trying to build the third level. Instead I built separate divs in my HTML for each level which was successful. However, this meant that there was a lot more code to build the game and so might not be as DRY as it could be.
 
